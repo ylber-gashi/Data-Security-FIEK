@@ -60,7 +60,24 @@ public class MorseCode {
         }
         return decodedText;
     }
-
+    public static void morseAudio(String text) throws IOException, LineUnavailableException, InterruptedException {
+        String audio = encode(text);
+        boolean sound = !Arrays.asList(audio).contains("-n");
+        for (char note : audio.toCharArray()) {
+            System.out.print(note == ' ' ? "" : note);
+            if (sound) {
+                try (SourceDataLine sdl = AudioSystem.getSourceDataLine(new AudioFormat(8000F, 8, 1, true, false))) {
+                    sdl.open(sdl.getFormat());
+                    sdl.start();
+                    for (int i = 0; i < (note == '.' ? DOT : DASH) * 8; i++) {
+                        sdl.write(new byte[]{(byte) (Math.sin(i / (8000F / FREQ) * 2.0 * Math.PI) * 127.0)}, 0, 1);
+                    }
+                    sdl.drain();
+                }
+            }
+            Thread.sleep(DOT / 5);
+        }
+    }
 
     
 }
