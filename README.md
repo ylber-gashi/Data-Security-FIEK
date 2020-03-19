@@ -66,7 +66,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 	**morse-code**
   
-  ![Morse-code]()
+  ![Morse-code](/Images/1.png/)
 Format: ![Alt Text](url)
     
 
@@ -75,7 +75,7 @@ Format: ![Alt Text](url)
 
     **caesar**
 
-![caesar]()
+![caesar](/Images/2.png/)
 Format: ![Alt Text](url)
 
     
@@ -86,7 +86,7 @@ Format: ![Alt Text](url)
 
     **count**
 
-![count]()
+![count](/Images/3.png/)
 Format: ![Alt Text](url)
 
     
