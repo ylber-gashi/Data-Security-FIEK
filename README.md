@@ -64,10 +64,10 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 ### Shembuj të përdorimit të komandave:
 
-	**morse-code**
+	**morse-code*
   
-  ![Morse-code](/Images/1.png/)
-Format: ![Alt Text](url)
+  ![](https://raw.githubusercontent.com/ylber-gashi/Siguria2020/master/Images/1.PNG)
+
     
 
 
@@ -75,8 +75,8 @@ Format: ![Alt Text](url)
 
     **caesar**
 
-![caesar](/Images/2.png/)
-Format: ![Alt Text](url)
+![]()
+
 
     
 
@@ -86,8 +86,8 @@ Format: ![Alt Text](url)
 
     **count**
 
-![count](/Images/3.png/)
-Format: ![Alt Text](url)
+![]()
+
 
     
 
