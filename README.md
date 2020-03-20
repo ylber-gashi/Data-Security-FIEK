@@ -73,7 +73,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 	morse-code
   
-  ![](https://raw.githubusercontent.com/ylber-gashi/Siguria2020/master/Images/1.PNG)
+  ![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/1.PNG)
 
     
 
@@ -91,7 +91,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 	count
 
-![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/3.PNG?raw=true)
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/3.PNG)
 
 
     
