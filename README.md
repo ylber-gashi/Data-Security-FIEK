@@ -32,14 +32,14 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 *   **symbols** (Numëron simbolet në tekstin hyrës, pra pa i përfshirë numrat, shkronjat dhe hapësirat)
 *   **characters** (Numëron të gjitha karakteret në tekstin hyrës, anashkalohen vetëm hapësirat)
 *   **vowels** (Numëron zanoret në tekstin hyrës)
-*   **Consonants** (Numëron bashkëtingëlloret në tekstin hyrës duke i zbritur numrin e zanoreve, hapësirave dhe simboleve nga gjatësia e tekstit hyrës)
+*   **consonants** (Numëron bashkëtingëlloret në tekstin hyrës duke i zbritur numrin e zanoreve, hapësirave dhe simboleve nga gjatësia e tekstit hyrës)
 *   **spaces**(Numëron hapësirat në tekstin hyrës)
 
 
 ### Për ekzekutimin e programit duhet ti ndjekni këto hapa:
 
 
-1. Së pari e bëni compile duke perdorur komandën: **javac paketa\ds.java** (sigurohuni të jeni në path-in e duhur)
+1. Së pari e bëni compile duke përdorur komandën: **javac paketa\ds.java** (sigurohuni të jeni në path-in e duhur)
 2. Së dyti, për të ekzekutuar një nga funksionet e programit duhet t’i shkruani komandat në këtë format: 
 
     -Per funksionin **_morse-code_**:
