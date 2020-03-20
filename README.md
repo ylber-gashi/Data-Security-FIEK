@@ -2,18 +2,25 @@
 
 
 
-Në këtë projekt janë realizuar tre funksione kryesore, të cilat kanë edhe nënfunksione tjera. Realizimin e tyre e kemi bërë me anë të gjuhës programuese Java.
+Në këtë projekt janë realizuar tri komanda kryesore, të cilat kanë edhe funksione(nënkomanda) tjera. Realizimin e tyre e kemi bërë me anë të gjuhës programuese Java.
 
 Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
-### Funksionet janë: 
+@ylber-gashi më detajisht është marrë me **Main** funksionin dhe me komandën **morse-code**, përkatësisht me enkriptimin dhe dekriptimin.
+
+@xhanan më detajisht është marrë me komandën **caesar** dhe me **beep** funksionin tek Morse kodi.
+
+@rrustemh më detajisht është marrë me komandën **count**. 
+
+
+### Komandat kryesore me funksionet apo nënkomandat përkatëse janë: 
 
 
 
 1. **morse-code**
-*   **encode**  (Alfabetin latin e kthen në kod Morse)
-*   **decode** (Hyrjen si kod Morse e kthen në alfabet latin)
-*   **beep**  (Hyrjen si alfabet latin e kthen në morse dhe e shpreh me zë, për secilin karakter)
+*   **encode**  (Alfabetin latin e kthen në Morse kod)
+*   **decode** (Hyrjen si Morse kod e kthen në alfabet latin)
+*   **beep**  (Hyrjen si alfabet latin e kthen në Morse kod dhe e shpreh me zë, për secilin karakter)
 2. **caesar**
 *   **encrypt** (Çdo karakter të tekstit hyrës e zhvendos për aq pozita sa është dhënë çelesi)
 *   **decrypt** (Cipher tekstin e zhvendos për aq sa është dhënë çelesi, por në anën e kundërt në krahasim me enkriptimin)
@@ -64,7 +71,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 ### Shembuj të përdorimit të komandave:
 
-	**morse-code*
+	morse-code
   
   ![](https://raw.githubusercontent.com/ylber-gashi/Siguria2020/master/Images/1.PNG)
 
@@ -72,10 +79,9 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 
 
+	caesar
 
-    **caesar**
-
-![]()
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/2.PNG)
 
 
     
@@ -83,10 +89,9 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 
 
+	count
 
-    **count**
-
-![]()
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/3.PNG?raw=true)
 
 
     
