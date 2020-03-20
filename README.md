@@ -6,7 +6,7 @@ Në këtë projekt janë realizuar tri komanda kryesore, të cilat kanë edhe fu
 
 Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
-@ylber-gashi më detajisht është marrë me **Main** funksionin dhe me komandën **morse-code**, përkatësisht me enkriptimin dhe dekriptimin.
+@ylber-gashi më detajisht është marrë me **Main** funksionin dhe me komandën **morse-code**, përkatësisht me enkodimin dhe dekodimin.
 
 @xhanan më detajisht është marrë me komandën **caesar** dhe me **beep** funksionin tek Morse kodi.
 
