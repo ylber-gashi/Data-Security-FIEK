@@ -63,6 +63,7 @@ public class MorseCode {
         }
         return decodedText;
     }
+    
     public static void morseAudio(String text) throws IOException, LineUnavailableException, InterruptedException 
     {
         String audio = encode(text);
