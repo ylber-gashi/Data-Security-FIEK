@@ -24,7 +24,33 @@ public class WriteRead {
     public String name;
 
     public WriteRead(String name) {
-
         this.name = name;
+    }
+    public PublicKey getPublicElements() throws Exception {
+
+        File file = new File("./keys/"+ name +".pub.xml");
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(file);
+        doc.getDocumentElement().normalize();
+
+        NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+        Node node = nodeList.item(0);
+
+        Element eElement = (Element) node;
+        String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+        String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
+        KeyFactory rsaFactory = KeyFactory.getInstance("RSA");
+
+        byte[] modBytes = modulus.getBytes();
+        byte[] expBytes = exponent.getBytes();
+        BigInteger modBigInt = new BigInteger(1, Base64.getDecoder().decode(modBytes));
+        BigInteger expBigInt = new BigInteger(1,Base64.getDecoder().decode(expBytes));
+
+        RSAPublicKeySpec rsaKeyspec;
+        rsaKeyspec = new RSAPublicKeySpec(modBigInt,expBigInt);
+        PublicKey key = rsaFactory.generatePublic(rsaKeyspec);
+
+        return key;
     }
 }
