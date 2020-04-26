@@ -53,4 +53,29 @@ public class WriteRead {
 
         return key;
     }
+    public PrivateKey getPrivateElements() throws Exception {
+        File file = new File("./keys/"+name+".xml");
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(file);
+        doc.getDocumentElement().normalize();
+
+        NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+        Node node = nodeList.item(0);
+
+        Element eElement = (Element) node;
+        String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+        String d = eElement.getElementsByTagName("D").item(0).getTextContent();
+        KeyFactory rsaFactory = KeyFactory.getInstance("RSA");
+
+        byte[] modBytes = modulus.getBytes();
+        byte[] dBytes = d.getBytes();
+        BigInteger modBigInt = new BigInteger(1, Base64.getDecoder().decode(modBytes));
+        BigInteger dBigInt = new BigInteger(1,Base64.getDecoder().decode(dBytes));
+
+        RSAPrivateKeySpec rsaKeyspec = new RSAPrivateKeySpec(modBigInt,dBigInt);
+        PrivateKey key = rsaFactory.generatePrivate(rsaKeyspec);
+
+        return key;
+    }
 }
