@@ -27,7 +27,10 @@ public class ExportImport {
             writer.write(text);
         }catch (Exception e){
             e.getMessage();
+        }finally {
+            writer.close();
         }
+
     }
 
     public void deleteUser() {
