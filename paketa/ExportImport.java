@@ -1,4 +1,5 @@
 package paketa;
+import java.io.PrintWriter;
 
 public class ExportImport {
 
@@ -20,8 +21,13 @@ public class ExportImport {
     public String readFile() throws FileNotFoundException {
 
     }
-    public void writeFile() throws Exception{
-
+    public void writeFile(String text, String filename) throws Exception{
+        PrintWriter writer = new PrintWriter(filename);
+        try{
+            writer.write(text);
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 
     public void deleteUser() {
