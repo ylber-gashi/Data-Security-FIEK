@@ -78,4 +78,12 @@ public class WriteRead {
 
         return key;
     }
+    public  String encrypt(String plainText) throws Exception {
+        PublicKey publicKey = getPublicElements();
+        Cipher encryptCipher = Cipher.getInstance("RSA");
+        encryptCipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        byte[] cipherbytes = encryptCipher.doFinal(plainText.getBytes());
+        String cipherText = Base64.getEncoder().encodeToString(cipherbytes);
+        return cipherText;
+    }
 }
