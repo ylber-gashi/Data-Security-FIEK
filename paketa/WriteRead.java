@@ -53,6 +53,7 @@ public class WriteRead {
 
         return key;
     }
+
     public PrivateKey getPrivateElements() throws Exception {
         File file = new File("./keys/"+name+".xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -78,6 +79,7 @@ public class WriteRead {
 
         return key;
     }
+
     public  String encrypt(String plainText) throws Exception {
         PublicKey publicKey = getPublicElements();
         Cipher encryptCipher = Cipher.getInstance("RSA");
@@ -85,5 +87,13 @@ public class WriteRead {
         byte[] cipherbytes = encryptCipher.doFinal(plainText.getBytes());
         String cipherText = Base64.getEncoder().encodeToString(cipherbytes);
         return cipherText;
+    }
+
+    public String decrypt(String data) throws Exception {
+        PrivateKey privateKey = getPrivateElements();
+        Cipher decriptCipher = Cipher.getInstance("RSA");
+        decriptCipher.init(Cipher.DECRYPT_MODE, privateKey);
+        byte[] bytes = Base64.getDecoder().decode(data.getBytes());
+        return new String(decriptCipher.doFinal(bytes));
     }
 }
