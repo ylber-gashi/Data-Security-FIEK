@@ -9,9 +9,9 @@ public class ExportImport {
     public void exportKey(String type, String user, String filepath) throws Exception {
         String name = null;
         if (type.equals("public")) {
-            name = user + ".pub.xml";
+            name = "./keys/" + user + ".pub.xml";
         } else if (type.equals("private")) {
-            name = user + ".xml";
+            name = "./keys/" + user + ".xml";
         }
         if (filepath == null) {
             System.out.println(readFile(name));
