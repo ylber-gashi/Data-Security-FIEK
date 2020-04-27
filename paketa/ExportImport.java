@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class ExportImport {
+    static final String NL = System.getProperty("line.separator");
 
     public void exportKey() throws Exception {
 
@@ -17,7 +18,8 @@ public class ExportImport {
         }
     }
 
-    public String getElement() throws Exception {
+    public String getElement(String name, String type) throws Exception {
+        return String.format("  <%s>%s</%s>%s", name, type, name, NL);
     }
 
     public String readFile(String fileName) throws FileNotFoundException {
