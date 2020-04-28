@@ -131,11 +131,18 @@ public class ExportImport {
     {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
-
-        builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
-        return doc;
-
+        try
+        {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
+            return doc;
+        }
+        catch (SAXParseException | ParserConfigurationException e) {
+            System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
+        } catch (IOException | SAXException e) {
+            System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
+        }
+        return null;
     }
 
 
