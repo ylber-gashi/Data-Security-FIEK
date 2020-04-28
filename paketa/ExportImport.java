@@ -86,7 +86,13 @@ public class ExportImport {
                 String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
                 String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
-                if() {
+                if(eElement.getElementsByTagName("P").getLength()>0) {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.append("<RSAKeyValue>" + NL);
+                    sb.append(getElement("Modulus", modulus));
+                    sb.append(getElement("Exponent", exponent));
+                    sb.append("</RSAKeyValue>");
 
                 }else{
 
