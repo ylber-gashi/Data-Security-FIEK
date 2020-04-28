@@ -131,4 +131,12 @@ public class WriteRead {
         byte[] bytes = Base64.getMimeDecoder().decode(ciphertext.getBytes());
         return new String(cipher.doFinal(bytes));
     }
+
+    public String encryptWrite(String plaintext) throws Exception {
+        String IV = Base64.getEncoder().encodeToString(generateIV().getIV());
+        String deskey = Base64.getEncoder().encodeToString(generateDESKey().getEncoded());
+        String uname = Base64.getEncoder().encodeToString(name.getBytes());
+        return uname + "." + IV + "." + encrypt(deskey) + "." + encryptTextDES(plaintext, IV, deskey);
+    }
+
 }
