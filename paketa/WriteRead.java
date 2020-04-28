@@ -153,4 +153,13 @@ public class WriteRead {
         sb.append(decryptTextDES(textArray[3],textArray[1], deskey));
         return sb.toString();
     }
+
+    public void Write(String plaintext,String filePath) throws Exception {
+        if(filePath==null){
+            System.out.println(encryptWrite(plaintext));
+        }else{
+            String text = encryptWrite(plaintext);
+            writeFile(text,filePath);
+        }
+    }
 }
