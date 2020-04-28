@@ -96,4 +96,12 @@ public class WriteRead {
         byte[] bytes = Base64.getDecoder().decode(data.getBytes());
         return new String(decriptCipher.doFinal(bytes));
     }
+
+    public IvParameterSpec generateIV(){
+        byte[] iv = new byte[8];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(iv);
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
+        return ivParameterSpec;
+    }
 }
