@@ -122,4 +122,13 @@ public class WriteRead {
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(keyBytes, "DES"),new IvParameterSpec(ivBytes));
         return Base64.getEncoder().encodeToString(cipher.doFinal(plaintext.getBytes()));
     }
+
+    public String decryptTextDES(String ciphertext,String IV, String deskey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, UnsupportedEncodingException {
+        Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+        byte[] keyBytes = Base64.getDecoder().decode(deskey.getBytes());
+        byte[] ivBytes = Base64.getDecoder().decode(IV.getBytes());
+        cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(keyBytes, "DES"),new IvParameterSpec(ivBytes));
+        byte[] bytes = Base64.getMimeDecoder().decode(ciphertext.getBytes());
+        return new String(cipher.doFinal(bytes));
+    }
 }
