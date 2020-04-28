@@ -94,6 +94,14 @@ public class ExportImport {
                     sb.append(getElement("Exponent", exponent));
                     sb.append("</RSAKeyValue>");
 
+                    String x = "../keys/" + user + ".pub.xml";
+                    writeFile(sb.toString(),x);
+                    System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+
+                    String text = sendGET(filePath);
+                    String y = "../keys/" + user + ".xml";
+                    writeFile(text,y);
+                    System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
                 }else{
 
                 }
