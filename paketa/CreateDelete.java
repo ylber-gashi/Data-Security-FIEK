@@ -1,3 +1,5 @@
+package paketa;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.math.BigInteger;
@@ -15,12 +17,13 @@ public class CreateDelete {
         KeyPair keyPair = createKeyPair(KEY_LENGTH);
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
-        
+
         String privateKeyAsXml = savePrivateKeyAsXml(privateKey);
-        writeFile(privateKeyAsXml, "./keys/" +user + ".xml");
-        
+        writeFile(privateKeyAsXml, "../keys/" +user + ".xml");
         String publicKeyAsXml = savePublicKeyAsXml(publicKey);
-        writeFile(publicKeyAsXml, "./keys/" +user + ".pub.xml");
+        writeFile(publicKeyAsXml, "../keys/" +user + ".pub.xml");
+        System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
+        System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
     }
 
     public KeyPair createKeyPair(int keyLength) throws NoSuchAlgorithmException {
@@ -30,21 +33,7 @@ public class CreateDelete {
         return keyPair;
     }
 
-
-
-    public String savePublicKeyAsXml(PublicKey publicKey) throws Exception {
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
-        RSAPublicKeySpec spec = keyFactory.getKeySpec(publicKey, RSAPublicKeySpec.class);
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("<RSAKeyValue>" + NL);
-        sb.append(getElement("Modulus", spec.getModulus()));
-        sb.append(getElement("Exponent", spec.getPublicExponent()));
-        sb.append("</RSAKeyValue>");
-
-        return sb.toString();
-    }
-     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
+    public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
         RSAPrivateCrtKeySpec spec = keyFactory.getKeySpec(privateKey, RSAPrivateCrtKeySpec.class);
         StringBuilder sb = new StringBuilder();
@@ -63,6 +52,19 @@ public class CreateDelete {
         return sb.toString();
     }
 
+    public String savePublicKeyAsXml(PublicKey publicKey) throws Exception {
+        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        RSAPublicKeySpec spec = keyFactory.getKeySpec(publicKey, RSAPublicKeySpec.class);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<RSAKeyValue>" + NL);
+        sb.append(getElement("Modulus", spec.getModulus()));
+        sb.append(getElement("Exponent", spec.getPublicExponent()));
+        sb.append("</RSAKeyValue>");
+
+        return sb.toString();
+    }
+
     public String getElement(String parameter, BigInteger bigInt) throws Exception {
 
         byte[] bytesFromBigInt = bigInt.toByteArray();
@@ -70,8 +72,24 @@ public class CreateDelete {
         return String.format("  <%s>%s</%s>%s", parameter, elementContent, parameter, NL);
     }
 
+    public void deleteUser(String user) {
+        File publik = new File("../keys/"+user+".pub.xml");
+        File privat = new File("../keys/"+user+".xml");
+        if (user.equals(user) && (publik.exists() || privat.exists())) {
+            if (publik.delete()) {
+                System.out.println("Eshte larguar celesi publik: '" + "keys/" + user + ".pub.xml" + "' ");
+            }
+            if (privat.delete()) {
+                System.out.println("Eshte larguar celesi privat: '"+"keys/"+ user +".xml"+"' \n");
+            }
+        }
+        else
+            System.out.println("Celesi '"+user+"' nuk ekziston");
+    }
+
     public void writeFile(String text, String filename) throws Exception{
         try(PrintWriter writer = new PrintWriter(filename)){
             writer.write(text);
         }
     }
+}
