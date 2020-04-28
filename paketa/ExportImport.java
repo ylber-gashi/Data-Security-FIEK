@@ -79,6 +79,13 @@ public class ExportImport {
                 Document doc = convertStringToXMLDocument(keyFromUrl);
                 doc.getDocumentElement().normalize();
 
+                NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+                Node node = nodeList.item(0);
+
+                Element eElement = (Element) node;
+                String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+                String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
+
                 if() {
 
                 }else{
