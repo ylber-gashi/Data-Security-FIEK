@@ -109,7 +109,10 @@ public class ExportImport {
                     System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
                 }
             }
-        }catch (Exception e) {
+        }catch (NullPointerException e) {
+            System.out.println("Krijimi i XML doc me permbajtje te URL deshtoi.");
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
