@@ -97,6 +97,6 @@ public class ExportImport {
         if ((file.exists())) {
             file.delete();
         } else
-            System.out.println("Gabim tek fshierja: Celesi '"+ user +"' nuk ekziston.");
+            System.out.println("Gabim tek fshirja: Celesi '"+ user +"' nuk ekziston.");
     }
 }
