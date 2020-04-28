@@ -139,4 +139,18 @@ public class WriteRead {
         return uname + "." + IV + "." + encrypt(deskey) + "." + encryptTextDES(plaintext, IV, deskey);
     }
 
+    public String decryptRead(String ciphertext) throws Exception {
+        String[] textArray = ciphertext.split("\\.");
+
+        String user = new String(Base64.getDecoder().decode(textArray[0].getBytes()));
+
+        String deskey = decrypt(textArray[2],user);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pranuesi: ");
+        sb.append(user);
+        sb.append("\n");
+        sb.append("Mesazhi: ");
+        sb.append(decryptTextDES(textArray[3],textArray[1], deskey));
+        return sb.toString();
+    }
 }
