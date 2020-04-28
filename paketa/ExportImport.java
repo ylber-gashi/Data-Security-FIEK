@@ -22,7 +22,7 @@ public class ExportImport {
         }
     }
 
-    public void importKey() throws FileNotFoundException {
+    public void importKey(String user,String filePath) throws FileNotFoundException {
         try {
 
         } catch (Exception e) {
