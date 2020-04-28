@@ -89,8 +89,8 @@ public class WriteRead {
         return cipherText;
     }
 
-    public String decrypt(String data) throws Exception {
-        PrivateKey privateKey = getPrivateElements();
+    public String decrypt(String data,String user) throws Exception {
+        PrivateKey privateKey = getPrivateElements(user);
         Cipher decriptCipher = Cipher.getInstance("RSA");
         decriptCipher.init(Cipher.DECRYPT_MODE, privateKey);
         byte[] bytes = Base64.getDecoder().decode(data.getBytes());
