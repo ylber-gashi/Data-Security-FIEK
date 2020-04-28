@@ -73,7 +73,7 @@ public class ExportImport {
                 reader.close();
             }
             else
-                System.out.println("Gabim: Celesi "+ type + " '"+fileName+"' nuk ekziston.");
+                sb.append("Gabim: Celesi " + type +" '" + user + "' nuk ekziston.");
         }catch (Exception e){
             e.printStackTrace();
         }
