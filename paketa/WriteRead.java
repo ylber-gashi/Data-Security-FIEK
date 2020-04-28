@@ -178,4 +178,20 @@ public class WriteRead {
             writer.write(text);
         }
     }
+    public String readFile(String fileName) throws FileNotFoundException {
+        StringBuilder sb = new StringBuilder();
+        try {
+            File file = new File(fileName);
+            if ((file.exists())){
+                Scanner reader = new Scanner(file);
+                while(reader.hasNextLine()){
+                    sb.append(reader.nextLine());
+                    sb.append( "\n");
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
 }
