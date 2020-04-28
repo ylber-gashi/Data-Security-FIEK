@@ -9,9 +9,9 @@ public class ExportImport {
     public void exportKey(String type, String user, String filepath) throws Exception {
         String name = null;
         if (type.equals("public")) {
-            name = "./keys/" + user + ".pub.xml";
+            name = "../keys/" + user + ".pub.xml";
         } else if (type.equals("private")) {
-            name = "./keys/" + user + ".xml";
+            name = "../keys/" + user + ".xml";
         }
         if (filepath == null) {
             System.out.println(readFile(name));
@@ -45,13 +45,13 @@ public class ExportImport {
                 sb.append(getElement("Exponent", exponent));
                 sb.append("</RSAKeyValue>");
 
-                String x = "keys/" + user + ".pub.xml";
+                String x = "../keys/" + user + ".pub.xml";
                 writeFile(sb.toString(),x);
                 String text = readFile(filePath);
                 writeFile(text,"keys/" + user + ".xml");
             }else{
                 String text = readFile(filePath);
-                writeFile("./keys/" + user + ".pub.xml",text);
+                writeFile("../keys/" + user + ".pub.xml",text);
         } catch (Exception e) {
             e.printStackTrace();
         }
