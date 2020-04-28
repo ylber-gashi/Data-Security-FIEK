@@ -125,5 +125,18 @@ public class ExportImport {
         }
     }
 
+    //Metoda per ta kontrolluar se a eshte valide nje url e dhene
+    public  boolean isValidURL(String urlString){
+        try
+        {
+            URL url = new URL(urlString);
+            url.toURI();
+            return true;
+        } catch (Exception exception)
+        {
+            return false;
+        }
+    }
+
 
 }
