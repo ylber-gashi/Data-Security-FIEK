@@ -54,8 +54,8 @@ public class WriteRead {
         return key;
     }
 
-    public PrivateKey getPrivateElements() throws Exception {
-        File file = new File("./keys/"+name+".xml");
+    public PrivateKey getPrivateElements(String user) throws Exception {
+        File file = new File("../keys/"+user+".xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(file);
