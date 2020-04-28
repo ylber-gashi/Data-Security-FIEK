@@ -21,7 +21,9 @@ import java.util.Base64;
 import java.util.Random;
 
 public class WriteRead {
-    public String name;
+    private String name;
+
+    public WriteRead(){}
 
     public WriteRead(String name) {
         this.name = name;
