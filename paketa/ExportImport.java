@@ -37,7 +37,7 @@ public class ExportImport {
             String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
             String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
-            if(eElement.getElementsByTagName("P") > 0) {
+            if (eElement.getElementsByTagName("P") > 0) {
                 StringBuilder sb = new StringBuilder();
 
                 sb.append("<RSAKeyValue>" + NL);
@@ -46,14 +46,15 @@ public class ExportImport {
                 sb.append("</RSAKeyValue>");
 
                 String x = "../keys/" + user + ".pub.xml";
-                writeFile(sb.toString(),x);
+                writeFile(sb.toString(), x);
                 String text = readFile(filePath);
-                writeFile(text,"keys/" + user + ".xml");
-            }else{
+                writeFile(text, "keys/" + user + ".xml");
+            } else {
                 String text = readFile(filePath);
-                writeFile("../keys/" + user + ".pub.xml",text);
-        } catch (Exception e) {
-            e.printStackTrace();
+                writeFile("../keys/" + user + ".pub.xml", text);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
@@ -99,4 +100,15 @@ public class ExportImport {
         } else
             System.out.println("Gabim tek fshirja: Celesi '"+ user +"' nuk ekziston.");
     }
+
+    //Metoda per ta marre celesin nga url
+    public String sendGET(String url) throws IOException {
+        if () { // success
+
+        } else {
+            return "GET request not worked";
+        }
+    }
+
+
 }
