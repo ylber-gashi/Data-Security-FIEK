@@ -57,8 +57,11 @@ public class ExportImport {
                         writeFile(text,y);
                         System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
                     } else {
-                        String text = readFile(filePath);
-                        writeFile("../keys/" + user + ".pub.xml", text);
+                        String type = "public";
+                        String text = readFile(filePath, user, type);
+                        String x = "../keys/" + user + ".pub.xml";
+                        writeFile(text,x);
+                        System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
                     } catch(Exception e){
                         e.printStackTrace();
                     }
