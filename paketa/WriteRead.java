@@ -172,4 +172,10 @@ public class WriteRead {
             System.out.println(decryptRead(ciphertext));
         }
     }
+
+    public void writeFile(String text, String filename) throws Exception{
+        try(PrintWriter writer = new PrintWriter(filename)){
+            writer.write(text);
+        }
+    }
 }
