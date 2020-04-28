@@ -162,4 +162,14 @@ public class WriteRead {
             writeFile(text,filePath);
         }
     }
+
+    public void Read(String ciphertext) throws Exception {
+        File file = new File(ciphertext);
+        if (file.exists()){
+            String text = readFile(ciphertext);
+            System.out.println(decryptRead(text));
+        } else {
+            System.out.println(decryptRead(ciphertext));
+        }
+    }
 }
