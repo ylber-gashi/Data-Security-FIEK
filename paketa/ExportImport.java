@@ -14,9 +14,9 @@ public class ExportImport {
             name = "../keys/" + user + ".xml";
         }
         if (filepath == null) {
-            System.out.println(readFile(name));
+            System.out.println(readFile(name, user, type));
         } else {
-            String text = readFile(name, type);
+            String text = readFile(name, user, type);
             writeFile(text, filepath);
             deleteUser(name);
         }
@@ -61,7 +61,7 @@ public class ExportImport {
         return String.format("  <%s>%s</%s>%s", name, type, name, NL);
     }
 
-    public String readFile(String fileName, String type) throws FileNotFoundException {
+    public String readFile(String fileName, String user, String type) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         try {
             File file = new File(fileName);
