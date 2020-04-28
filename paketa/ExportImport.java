@@ -75,7 +75,15 @@ public class ExportImport {
                     }
                 }
             } else {
+                String keyFromUrl = sendGET(filePath);
+                Document doc = convertStringToXMLDocument(keyFromUrl);
+                doc.getDocumentElement().normalize();
 
+                if() {
+
+                }else{
+
+                }
             }
         }catch (Exception e) {
             e.printStackTrace();
