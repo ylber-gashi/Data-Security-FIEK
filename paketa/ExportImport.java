@@ -103,8 +103,22 @@ public class ExportImport {
 
     //Metoda per ta marre celesin nga url
     public String sendGET(String url) throws IOException {
-        if () { // success
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+        con.setRequestProperty("User-Agent","Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) { // success
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
 
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+                response.append("\n");
+            }
+            return response.toString();
         } else {
             return "GET request not worked";
         }
