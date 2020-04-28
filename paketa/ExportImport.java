@@ -125,6 +125,20 @@ public class ExportImport {
         }
     }
 
+
+    //Metoda per konvertimin e nje permbajtje String ne XML document, qe perdoret kur kemi import-key me URL
+    public  Document convertStringToXMLDocument(String xmlString)
+    {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = null;
+
+        builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
+        return doc;
+
+    }
+
+
     //Metoda per ta kontrolluar se a eshte valide nje url e dhene
     public  boolean isValidURL(String urlString){
         try
