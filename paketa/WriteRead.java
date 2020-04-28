@@ -96,4 +96,21 @@ public class WriteRead {
         byte[] bytes = Base64.getDecoder().decode(data.getBytes());
         return new String(decriptCipher.doFinal(bytes));
     }
+
+    public IvParameterSpec generateIV(){
+        byte[] iv = new byte[8];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(iv);
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
+        return ivParameterSpec;
+    }
+
+    public SecretKeySpec generateDESKey(){
+        Random random = new Random();
+        byte[] keyBytes =  new byte[8];
+        random.nextBytes(keyBytes);
+        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "DES");
+        return secretKey;
+    }
+
 }
