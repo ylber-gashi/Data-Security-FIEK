@@ -41,17 +41,21 @@ public class ExportImport {
                     String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
                     if (eElement.getElementsByTagName("P") > 0) {
-                        StringBuilder sb = new StringBuilder();
+                        String type = "privat";
 
+                        StringBuilder sb = new StringBuilder();
                         sb.append("<RSAKeyValue>" + NL);
                         sb.append(getElement("Modulus", modulus));
                         sb.append(getElement("Exponent", exponent));
                         sb.append("</RSAKeyValue>");
 
                         String x = "../keys/" + user + ".pub.xml";
-                        writeFile(sb.toString(), x);
-                        String text = readFile(filePath);
-                        writeFile(text, "keys/" + user + ".xml");
+                        writeFile(sb.toString(),x);
+                        System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+                        String text = readFile(filePath, user, type);
+                        String y = "../keys/" + user + ".xml";
+                        writeFile(text,y);
+                        System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
                     } else {
                         String text = readFile(filePath);
                         writeFile("../keys/" + user + ".pub.xml", text);
