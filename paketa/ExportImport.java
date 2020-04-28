@@ -118,6 +118,7 @@ public class ExportImport {
                 response.append(inputLine);
                 response.append("\n");
             }
+            in.close();
             return response.toString();
         } else {
             return "GET request not worked";
