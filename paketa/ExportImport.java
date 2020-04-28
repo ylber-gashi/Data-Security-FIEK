@@ -45,6 +45,8 @@ public class ExportImport {
                 sb.append(getElement("Exponent", exponent));
                 sb.append("</RSAKeyValue>");
 
+                String x = "keys/" + user + ".pub.xml";
+                writeFile(sb.toString(),x);
                 String text = readFile(filePath);
                 writeFile(text,"keys/" + user + ".xml");
             }else{
