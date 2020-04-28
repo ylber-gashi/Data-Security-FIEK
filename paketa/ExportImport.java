@@ -62,7 +62,15 @@ public class ExportImport {
                         String x = "../keys/" + user + ".pub.xml";
                         writeFile(text,x);
                         System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
-                    } catch(Exception e){
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Gabim: Fajlli i dhene nuk eshte celes valid.");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (SAXException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
