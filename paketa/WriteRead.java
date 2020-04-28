@@ -104,4 +104,13 @@ public class WriteRead {
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
         return ivParameterSpec;
     }
+
+    public SecretKeySpec generateDESKey(){
+        Random random = new Random();
+        byte[] keyBytes =  new byte[8];
+        random.nextBytes(keyBytes);
+        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "DES");
+        return secretKey;
+    }
+
 }
