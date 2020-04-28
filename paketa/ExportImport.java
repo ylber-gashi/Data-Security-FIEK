@@ -22,9 +22,36 @@ public class ExportImport {
         }
     }
 
-    public void importKey() throws FileNotFoundException {
+    public void importKey(String user,String filePath) throws FileNotFoundException {
         try {
+            File file = new File(filePath);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            org.w3c.dom.Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
 
+            NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+            Node node = nodeList.item(0);
+
+            Element eElement = (Element) node;
+            String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+            String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
+
+            if(eElement.getElementsByTagName("P") > 0) {
+                StringBuilder sb = new StringBuilder();
+
+                sb.append("<RSAKeyValue>" + NL);
+                sb.append(getElement("Modulus", modulus));
+                sb.append(getElement("Exponent", exponent));
+                sb.append("</RSAKeyValue>");
+
+                String x = "keys/" + user + ".pub.xml";
+                writeFile(sb.toString(),x);
+                String text = readFile(filePath);
+                writeFile(text,"keys/" + user + ".xml");
+            }else{
+                String text = readFile(filePath);
+                writeFile("./keys/" + user + ".pub.xml",text);
         } catch (Exception e) {
             e.printStackTrace();
         }

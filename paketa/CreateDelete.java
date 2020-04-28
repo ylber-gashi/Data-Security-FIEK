@@ -15,7 +15,10 @@ public class CreateDelete {
         KeyPair keyPair = createKeyPair(KEY_LENGTH);
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
-
+        
+        String privateKeyAsXml = savePrivateKeyAsXml(privateKey);
+        writeFile(privateKeyAsXml, "./keys/" +user + ".xml");
+        
         String publicKeyAsXml = savePublicKeyAsXml(publicKey);
         writeFile(publicKeyAsXml, "./keys/" +user + ".pub.xml");
     }
@@ -37,6 +40,24 @@ public class CreateDelete {
         sb.append("<RSAKeyValue>" + NL);
         sb.append(getElement("Modulus", spec.getModulus()));
         sb.append(getElement("Exponent", spec.getPublicExponent()));
+        sb.append("</RSAKeyValue>");
+
+        return sb.toString();
+    }
+     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
+        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        RSAPrivateCrtKeySpec spec = keyFactory.getKeySpec(privateKey, RSAPrivateCrtKeySpec.class);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<RSAKeyValue>" + NL);
+        sb.append(getElement("Modulus", spec.getModulus()));
+        sb.append(getElement("Exponent", spec.getPublicExponent()));
+        sb.append(getElement("P", spec.getPrimeP()));
+        sb.append(getElement("Q", spec.getPrimeQ()));
+        sb.append(getElement("DP", spec.getPrimeExponentP()));
+        sb.append(getElement("DQ", spec.getPrimeExponentQ()));
+        sb.append(getElement("InverseQ", spec.getCrtCoefficient()));
+        sb.append(getElement("D", spec.getPrivateExponent()));
         sb.append("</RSAKeyValue>");
 
         return sb.toString();
