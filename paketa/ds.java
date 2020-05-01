@@ -109,6 +109,14 @@ public class ds {
                         "Nese duam ta eksportojme celesin ne ndonje fajll tjeter: export-key <public|private> <name> [file]");
             }
         }
+        else if("import-key".equals(args[0])){
+            if(args.length == 3){
+                ex.importKey(args[1],args[2]);
+            }
+            else {
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda import-key duhet te jepet sipas kesaj skeme: import-key <name> <path>\n");
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
