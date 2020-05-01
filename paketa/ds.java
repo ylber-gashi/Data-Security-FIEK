@@ -96,6 +96,18 @@ public class ds {
                 System.exit(1);
             }
         }
+        else if("export-key".equals(args[0])){
+            if(args.length == 3){
+                ex.exportKey(args[1],args[2],null);
+            }else if (args.length == 4)
+                ex.exportKey(args[1],args[2],args[3]);
+            else {
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda export-key duhet te jepet sipas kesaj skeme: \n" +
+                        "Nese duam vetem ta lexojme celesin:                      export-key <public|private> <name>\n" +
+                        "Nese duam ta eksportojme celesin ne ndonje fajll tjeter: export-key <public|private> <name> [file]");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
