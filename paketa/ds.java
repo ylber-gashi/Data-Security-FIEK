@@ -10,9 +10,9 @@ public class ds {
         MorseCode morseCode=new MorseCode();
         Count count=new Count();
         
-        if(args.length < 3 || args.length >4){
-            throw new ArrayIndexOutOfBoundsException("\n\tNot enough arguments!" +
-                                                    "\n\tFunctions of this program accept 3 or 4 arguments!");
+        if(args.length < 2 || args.length >4){
+           System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
+           System.exit(1);
         }
         
         else if ("morse-code".equals(args[0])){
