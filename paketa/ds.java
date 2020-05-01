@@ -10,6 +10,7 @@ public class ds {
         MorseCode morseCode=new MorseCode();
         Count count=new Count();
         ExportImport ex =  new ExportImport();
+        CreateUser cd = new CreateUser();
         
         if(args.length < 2 || args.length >4){
            System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
