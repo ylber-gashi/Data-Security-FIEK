@@ -122,8 +122,9 @@ public class ds {
             if(args.length == 2){
                 cd.saveKeys(args[1]);
             }else{
-                System.out.println("Ju lutem jepni vetum nje komande shtese pas komandes 'create-user'.");
-                System.out.println("Komanda shtese duhet te jete emri i user qe deshiron te krijoni.");
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda create-user duhet te jepet sipas kesaj skeme: \n" +
+                        "create-user <name> \n");
             }
         }
         else if("delete-user".equals(args[0])){
