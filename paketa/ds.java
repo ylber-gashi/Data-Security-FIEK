@@ -131,8 +131,9 @@ public class ds {
             if(args.length == 2){
                 cd.deleteUser(args[1]);
             }else{
-                System.out.println("Ju lutem jepni vetum nje komande shtese pas komandes 'delete-user'.");
-                System.out.println("Komanda shtese duhet te jete emri i user qe deshiron te fshini.");
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda delete-user duhet te jepet sipas kesaj skeme: \n" +
+                        "delete-user <name> \n");
             }
         }
         else {
