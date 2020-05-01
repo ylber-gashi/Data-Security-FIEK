@@ -45,7 +45,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
     -Per funksionin **_morse-code_**:
 
 
-	java paketa.ds morse-code encode/decode &lt;text>/&lt;morse code>
+    **java paketa.ds morse-code encode/decode &lt;text>/&lt;morse code>**
 
 
     **java paketa.ds morse-code beep &lt;text>**
