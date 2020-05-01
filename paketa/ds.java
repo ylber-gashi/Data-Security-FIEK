@@ -121,7 +121,13 @@ public class ds {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
                     " caesar\n" +
-                    " count\n\n");
+                    " count\n" + 
+                    " create-user\n" + 
+                    " delete-user\n" +
+                    " export-key\n" + 
+                    " import-key\n" + 
+                    " write-message\n" +
+                    " read-message\n\n");
             System.exit(1);
         }
     }
