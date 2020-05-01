@@ -117,6 +117,14 @@ public class ds {
                 System.out.println("Nuk jane dhene komanda valide.\n");
                 System.out.println("Komanda import-key duhet te jepet sipas kesaj skeme: import-key <name> <path>\n");
         }
+        else if("create-user".equals(args[0])){
+            if(args.length == 2){
+                cd.saveKeys(args[1]);
+            }else{
+                System.out.println("Ju lutem jepni vetum nje komande shtese pas komandes 'create-user'.");
+                System.out.println("Komanda shtese duhet te jete emri i user qe deshiron te krijoni.");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
