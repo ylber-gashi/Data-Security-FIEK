@@ -126,6 +126,14 @@ public class ds {
                 System.out.println("Komanda shtese duhet te jete emri i user qe deshiron te krijoni.");
             }
         }
+        else if("delete-user".equals(args[0])){
+            if(args.length == 2){
+                cd.deleteUser(args[1]);
+            }else{
+                System.out.println("Ju lutem jepni vetum nje komande shtese pas komandes 'delete-user'.");
+                System.out.println("Komanda shtese duhet te jete emri i user qe deshiron te fshini.");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
