@@ -9,6 +9,7 @@ public class ds {
         Caesar caesar = new Caesar();
         MorseCode morseCode=new MorseCode();
         Count count=new Count();
+        ExportImport ex =  new ExportImport();
         
         if(args.length < 2 || args.length >4){
            System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
