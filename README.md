@@ -7,7 +7,7 @@ Në këtë projekt janë realizuar tri komanda kryesore, të cilat kanë edhe fu
 Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 
-### Komandat kryesore me funksionet apo nënkomandat përkatëse janë: 
+## Komandat kryesore me funksionet apo nënkomandat përkatëse janë: 
 
 
 ### FAZA 1
@@ -29,7 +29,7 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 *   **consonants** (Numëron bashkëtingëlloret në tekstin hyrës duke i zbritur numrin e zanoreve, hapësirave dhe simboleve nga gjatësia e tekstit hyrës)
 *   **spaces**(Numëron hapësirat në tekstin hyrës)
 
-## FAZA 2
+### FAZA 2
 1.
 *	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
 direktoriumittëçelësave keys)
@@ -42,7 +42,8 @@ direktoriumittëçelësave keys)
 *	**read-message** (E dekripton dhe e shfaq në console mesazhin e enkriptuar.)
 
 
-### Për ekzekutimin e programit duhet ti ndjekni këto hapa:
+
+## Për ekzekutimin e programit duhet ti ndjekni këto hapa:
 
 
 1. Së pari e bëni compile duke përdorur komandën: **javac paketa\ds.java** (sigurohuni të jeni në path-in e duhur)
@@ -98,7 +99,7 @@ direktoriumittëçelësave keys)
 	java paketa.ds read-message <encrypted-message>
 	
 	
-### Shembuj të përdorimit të komandave:
+## Shembuj të përdorimit të komandave:
 
 	morse-code
   
@@ -184,7 +185,7 @@ direktoriumittëçelësave keys)
 
 
 
-**Referencat:**
+## Referencat:
 
 
 
