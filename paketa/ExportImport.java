@@ -185,14 +185,6 @@ public class ExportImport {
         }
     }
 
-    public void deleteUser(String user) {
-        File file = new File(user);
-        if ((file.exists())) {
-            file.delete();
-        } else
-            System.out.println("Gabim tek fshirja: Celesi '" + user + "' nuk ekziston.");
-    }
-
     //Metoda per ta marre celesin nga url
     public String sendGET(String url) throws IOException {
         URL obj = new URL(url);
