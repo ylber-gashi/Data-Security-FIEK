@@ -12,6 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.ConnectException;
 import java.util.Scanner;
 
 public class ExportImport {
@@ -20,16 +21,22 @@ public class ExportImport {
     public void exportKey(String type, String user, String filepath) throws Exception {
         String name = null;
         if (type.equals("public")) {
+            type = "publik";
             name = "./keys/" + user + ".pub.xml";
         } else if (type.equals("private")) {
+            type = "privat";
             name = "./keys/" + user + ".xml";
         }
         if (filepath == null) {
             System.out.println(readFile(name, user, type));
         } else {
             String text = readFile(name, user, type);
-            writeFile(text, filepath);
-            deleteUser(name);
+            if(text != null) {
+                writeFileEXPORT(type, text, filepath);
+            }
+            else{
+                System.out.println("Gabim: Celesi " + type + " '" + user + "' nuk ekziston.");
+            }
         }
     }
 
@@ -61,18 +68,16 @@ public class ExportImport {
                         sb.append("</RSAKeyValue>");
 
                         String x = "./keys/" + user + ".pub.xml";
-                        writeFile(sb.toString(), x);
-                        System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+                        writeFile("publik", sb.toString(), x);
+
                         String text = readFile(filePath, user, type);
                         String y = "./keys/" + user + ".xml";
-                        writeFile(text, y);
-                        System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
+                        writeFile(type, text, y);
                     } else {
-                        String type = "public";
+                        String type = "publik";
                         String text = readFile(filePath, user, type);
                         String x = "./keys/" + user + ".pub.xml";
-                        writeFile(text, x);
-                        System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+                        writeFile(type, text, x);
                     }
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
@@ -107,23 +112,23 @@ public class ExportImport {
                     sb.append("</RSAKeyValue>");
 
                     String x = "./keys/" + user + ".pub.xml";
-                    writeFile(sb.toString(), x);
-                    System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+                    writeFile("publik", sb.toString(), x);
 
                     String text = sendGET(filePath);
                     String y = "./keys/" + user + ".xml";
-                    writeFile(text, y);
-                    System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
+                    writeFile(type, text, y);
                 } else {
+                    String type = "publik";
                     String text = sendGET(filePath);
                     String x = "./keys/" + user + ".pub.xml";
-                    writeFile(text, x);
-                    System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
+                    writeFile(type, text, x);
                 }
             }
         } catch (NullPointerException e) {
             System.out.println("Krijimi i XML doc me permbajtje te URL deshtoi.");
-        } catch (Exception e) {
+        } catch (ConnectException e) {
+            System.out.println("Krijimi i XML doc me permbajtje te URL deshtoi.");
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -150,7 +155,7 @@ public class ExportImport {
         return sb.toString();
     }
 
-    public void writeFile(String text, String filename) throws Exception {
+    public void writeFileEXPORT(String type,String text, String filename) throws Exception {
         PrintWriter writer = new PrintWriter(filename);
         try {
             writer.write(text);
@@ -161,6 +166,23 @@ public class ExportImport {
             writer.close();
         }
 
+    }
+    
+    public void writeFile(String type, String text, String filename) throws Exception {
+        File fajlli = new File(filename);
+        try {
+            if(fajlli.exists()) {
+                System.out.println("Gabim: Celesi " + filename + " ekziston paraprakisht.");
+            }
+            else{
+                PrintWriter writer = new PrintWriter(filename);
+                writer.write(text);
+                System.out.println("Celesi " + type + " u ruajt ne fajllin '" + filename + "'.");
+                writer.close();
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     public void deleteUser(String user) {
