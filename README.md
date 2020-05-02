@@ -6,17 +6,11 @@ Në këtë projekt janë realizuar tri komanda kryesore, të cilat kanë edhe fu
 
 Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
-@ylber-gashi më detajisht është marrë me **Main** funksionin dhe me komandën **morse-code**, përkatësisht me enkodimin dhe dekodimin.
-
-@xhanan më detajisht është marrë me komandën **caesar** dhe me **beep** funksionin tek Morse kodi.
-
-@rrustemh më detajisht është marrë me komandën **count**. 
-
 
 ### Komandat kryesore me funksionet apo nënkomandat përkatëse janë: 
 
 
-
+### FAZA 1
 1. **morse-code**
 *   **encode**  (Alfabetin latin e kthen në Morse kod)
 *   **decode** (Hyrjen si Morse kod e kthen në alfabet latin)
@@ -34,6 +28,19 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 *   **vowels** (Numëron zanoret në tekstin hyrës)
 *   **consonants** (Numëron bashkëtingëlloret në tekstin hyrës duke i zbritur numrin e zanoreve, hapësirave dhe simboleve nga gjatësia e tekstit hyrës)
 *   **spaces**(Numëron hapësirat në tekstin hyrës)
+
+## FAZA 2
+1.
+*	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
+direktoriumittëçelësave keys)
+*	**delete-user** (I largontëgjithë çelësatekzistuestëshfrytëzuesit.)
+2. 
+*	**export-key** (Eksportonçelësinpublik ose privattëshfrytëzuesitngadirektoriumii çelësave.)
+*	**import-key** (Importonçelësinpublikoseprivattëshfrytëzuesitngashteguidhënëdheevendosnëdirektoriumin
+e çelësave.)
+3.
+*	**write-message** (E shkruan një mesazh tëenkriptuartëdedikuarpër një shfrytëzues.)
+*	**read-message** (E dekriptondhe e shfaqnë consolemesazhin e enkriptuar.)
 
 
 ### Për ekzekutimin e programit duhet ti ndjekni këto hapa:
