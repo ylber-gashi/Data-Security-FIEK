@@ -9,10 +9,12 @@ public class ds {
         Caesar caesar = new Caesar();
         MorseCode morseCode=new MorseCode();
         Count count=new Count();
+        ExportImport ex =  new ExportImport();
+        CreateUser cd = new CreateUser();
         
-        if(args.length < 3 || args.length >4){
-            throw new ArrayIndexOutOfBoundsException("\n\tNot enough arguments!" +
-                                                    "\n\tFunctions of this program accept 3 or 4 arguments!");
+        if(args.length < 2 || args.length >4){
+           System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
+           System.exit(1);
         }
         
         else if ("morse-code".equals(args[0])){
@@ -96,11 +98,55 @@ public class ds {
                 System.exit(1);
             }
         }
+        else if("export-key".equals(args[0])){
+            if(args.length == 3){
+                ex.exportKey(args[1],args[2],null);
+            }else if (args.length == 4)
+                ex.exportKey(args[1],args[2],args[3]);
+            else {
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda export-key duhet te jepet sipas kesaj skeme: \n" +
+                        "Nese duam vetem ta lexojme celesin:                      export-key <public|private> <name>\n" +
+                        "Nese duam ta eksportojme celesin ne ndonje fajll tjeter: export-key <public|private> <name> [file]");
+            }
+        }
+        else if("import-key".equals(args[0])){
+            if(args.length == 3){
+                ex.importKey(args[1],args[2]);
+            }
+            else {
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda import-key duhet te jepet sipas kesaj skeme: import-key <name> <path>\n");
+        }
+        else if("create-user".equals(args[0])){
+            if(args.length == 2){
+                cd.saveKeys(args[1]);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda create-user duhet te jepet sipas kesaj skeme: \n" +
+                        "create-user <name> \n");
+            }
+        }
+        else if("delete-user".equals(args[0])){
+            if(args.length == 2){
+                cd.deleteUser(args[1]);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda delete-user duhet te jepet sipas kesaj skeme: \n" +
+                        "delete-user <name> \n");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
                     " caesar\n" +
-                    " count\n\n");
+                    " count\n" + 
+                    " create-user\n" + 
+                    " delete-user\n" +
+                    " export-key\n" + 
+                    " import-key\n" + 
+                    " write-message\n" +
+                    " read-message\n\n");
             System.exit(1);
         }
     }
