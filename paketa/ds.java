@@ -150,6 +150,16 @@ public class ds {
                         "write-message <name> <message> [file]' \n");
             }
         }
+        else if("read-message".equals(args[0])){
+            WriteRead wr = new WriteRead();
+            if(args.length == 2) {
+                wr.Read(args[1]);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda read-message duhet te jepet sipas kesaj skeme: \n" +
+                        "' read-message <encrypted-message>' \n");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
