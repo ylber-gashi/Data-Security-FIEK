@@ -33,14 +33,13 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 1.
 *	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
 direktoriumittëçelësave keys)
-*	**delete-user** (I largontëgjithë çelësatekzistuestëshfrytëzuesit.)
+*	**delete-user** (I largontëgjithë çelësat ekzistues të shfrytëzuesit.)
 2. 
-*	**export-key** (Eksportonçelësinpublik ose privattëshfrytëzuesitngadirektoriumii çelësave.)
-*	**import-key** (Importonçelësinpublikoseprivattëshfrytëzuesitngashteguidhënëdheevendosnëdirektoriumin
-e çelësave.)
+*	**export-key** (Eksporton çelësin publik ose privat t ëshfrytëzuesit nga direktoriumi i çelësave.)
+*	**import-key** (Importon çelësin publik ose privat të shfrytëzuesit nga shtegu i dhënë dhe e vendos në direktoriumin e çelësave.)
 3.
-*	**write-message** (E shkruan një mesazh tëenkriptuartëdedikuarpër një shfrytëzues.)
-*	**read-message** (E dekriptondhe e shfaqnë consolemesazhin e enkriptuar.)
+*	**write-message** (E shkruan një mesazh të enkriptuar të dedikuar për një shfrytëzues.)
+*	**read-message** (E dekripton dhe e shfaq në console mesazhin e enkriptuar.)
 
 
 ### Për ekzekutimin e programit duhet ti ndjekni këto hapa:
