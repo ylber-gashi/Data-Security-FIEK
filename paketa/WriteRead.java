@@ -160,6 +160,7 @@ public class WriteRead {
         }else{
             String text = encryptWrite(plaintext);
             writeFile(text,filePath);
+            System.out.println("Mesazhi i enkriptuar u ruajt ne fajllin "+filePath);
         }
     }
 
