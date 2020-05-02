@@ -136,6 +136,20 @@ public class ds {
                         "delete-user <name> \n");
             }
         }
+        else if("write-message".equals(args[0])){
+            WriteRead wr = new WriteRead(args[1]);
+            if(args.length == 4){
+                wr.Write(args[2],args[3]);
+            }else if(args.length == 3){
+                wr.Write(args[2],null);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda write-message nese deshironi vetem t'a enkriptoni mesazhin tuaj duhet te jepet sipas kesaj skeme: \n" +
+                        "'write-message <name> <message>' \n");
+                System.out.println("Komanda write-message nese deshironi vetem t'a ruani mesazhin e enkriptuar ne nje file duhet te jepet sipas kesaj skeme: \n" +
+                        "write-message <name> <message> [file]' \n");
+            }
+        }
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
