@@ -100,6 +100,7 @@ direktoriumittëçelësave keys)
 	
 	
 ## Shembuj të përdorimit të komandave:
+### FAZA 1
 
 	morse-code
   
@@ -129,6 +130,7 @@ direktoriumittëçelësave keys)
 
 
 
+### FAZA 1
 	create-user
 
 ![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/4.PNG)
