@@ -30,7 +30,7 @@ public class WriteRead {
     }
     public PublicKey getPublicElements() throws Exception {
 
-        File file = new File("./keys/"+ name +".pub.xml");
+        File file = new File("../keys/"+ name +".pub.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(file);
