@@ -48,33 +48,56 @@ direktoriumittëçelësave keys)
 1. Së pari e bëni compile duke përdorur komandën: **javac paketa\ds.java** (sigurohuni të jeni në path-in e duhur)
 2. Së dyti, për të ekzekutuar një nga funksionet e programit duhet t’i shkruani komandat në këtë format: 
 
-    -Per funksionin **_morse-code_**:
+### Faza 1
+
+-Per funksionin **_morse-code_**:
+
+	java paketa.ds morse-code encode/decode &lt;text>/&lt;morse code>
+
+	java paketa.ds morse-code beep &lt;text>
 
 
-    **java paketa.ds morse-code encode/decode &lt;text>/&lt;morse code>**
+-Per funksionin **_caesar_**:
+
+	java paketa.ds caesar encrypt/decrypt &lt;key> &lt;plain text>/&lt;cipher text>
+
+	java paketa.ds caesar brute-force &lt;cipher text>
 
 
-    **java paketa.ds morse-code beep &lt;text>**
+-Per funksionin **_count_**:
 
+	java paketa.ds count lines/words/letters/symbols &lt;text>
 
-    -Per funksionin **_caesar_**:
+	java paketa.ds count characters/vowels/consonants/spaces &lt;text>
+    
+    
+### Faza 2
 
+-Per komandën **_create-user_**:
+	
+	java paketa.ds create-user <name>
+	
+-Per komandën **_delete-user_**:
 
-    **java paketa.ds caesar encrypt/decrypt &lt;key> &lt;plain text>/&lt;cipher text>**
+	java paketa.ds delete-user <name>
+	
+-Per komandën **_export-key_**:
 
+	java paketa.ds export-key <public|private> <name> [file]
+	
+-Per komandën **_import-key_**:
 
-    **java paketa.ds caesar brute-force &lt;cipher text>**
+	java paketa.ds import-key <name> <path>
+	
+-Per komandën **_write-message_**:
 
+	java paketa.ds write-message <name> <message> [file]
+	
+-Per komandën **_read-message_**:
 
-    -Per funksionin **_count_**:
-
-
-    **java paketa.ds count lines/words/letters/symbols &lt;text>**
-
-
-    **java paketa.ds count characters/vowels/consonants/spaces &lt;text>**
-
-
+	java paketa.ds read-message <encrypted-message>
+	
+	
 ### Shembuj të përdorimit të komandave:
 
 	morse-code
@@ -101,6 +124,63 @@ direktoriumittëçelësave keys)
 
 
     
+
+
+
+
+	create-user
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/4.PNG)
+
+
+    
+
+
+
+
+	delete-user
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/5.PNG)
+
+
+    
+
+
+
+
+	export-key
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/6.PNG)    
+
+
+    
+
+
+
+
+	import-key
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/7.PNG)
+
+
+    
+
+
+
+
+	write-message
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/8.PNG)
+
+
+    
+
+
+
+
+	read-message
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/9.PNG)
 
 
 
