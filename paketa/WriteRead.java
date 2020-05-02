@@ -1,3 +1,5 @@
+package paketa;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -12,25 +14,30 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
 import java.security.*;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.Random;
+import java.util.Scanner;
 
 public class WriteRead {
     private String name;
 
-    public WriteRead(){}
-
-    public WriteRead(String name) {
+    public void setName(String name) {
         this.name = name;
     }
+
     public PublicKey getPublicElements() throws Exception {
 
-        File file = new File("../keys/"+ name +".pub.xml");
+        File file = new File("./keys/"+ name +".pub.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(file);
@@ -57,7 +64,7 @@ public class WriteRead {
     }
 
     public PrivateKey getPrivateElements(String user) throws Exception {
-        File file = new File("../keys/"+user+".xml");
+        File file = new File("./keys/"+user+".xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(file);

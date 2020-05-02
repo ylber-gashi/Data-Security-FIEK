@@ -1,7 +1,18 @@
 package paketa;
-import java.io.PrintWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.*;
+import org.w3c.dom.Document;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
 
 public class ExportImport {
     static final String NL = System.getProperty("line.separator");
@@ -9,9 +20,9 @@ public class ExportImport {
     public void exportKey(String type, String user, String filepath) throws Exception {
         String name = null;
         if (type.equals("public")) {
-            name = "../keys/" + user + ".pub.xml";
+            name = "./keys/" + user + ".pub.xml";
         } else if (type.equals("private")) {
-            name = "../keys/" + user + ".xml";
+            name = "./keys/" + user + ".xml";
         }
         if (filepath == null) {
             System.out.println(readFile(name, user, type));
@@ -22,7 +33,7 @@ public class ExportImport {
         }
     }
 
-    public void importKey(String user,String filePath) {
+    public void importKey(String user, String filePath) {
         boolean isPath = isValidURL(filePath);
         try {
             if (!isPath) {
@@ -40,7 +51,7 @@ public class ExportImport {
                     String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
                     String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
-                    if (eElement.getElementsByTagName("P") > 0) {
+                    if (eElement.getElementsByTagName("P").getLength() > 0) {
                         String type = "privat";
 
                         StringBuilder sb = new StringBuilder();
@@ -49,31 +60,32 @@ public class ExportImport {
                         sb.append(getElement("Exponent", exponent));
                         sb.append("</RSAKeyValue>");
 
-                        String x = "../keys/" + user + ".pub.xml";
-                        writeFile(sb.toString(),x);
+                        String x = "./keys/" + user + ".pub.xml";
+                        writeFile(sb.toString(), x);
                         System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
                         String text = readFile(filePath, user, type);
-                        String y = "../keys/" + user + ".xml";
-                        writeFile(text,y);
+                        String y = "./keys/" + user + ".xml";
+                        writeFile(text, y);
                         System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
                     } else {
                         String type = "public";
                         String text = readFile(filePath, user, type);
-                        String x = "../keys/" + user + ".pub.xml";
-                        writeFile(text,x);
+                        String x = "./keys/" + user + ".pub.xml";
+                        writeFile(text, x);
                         System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("Gabim: Fajlli i dhene nuk eshte celes valid.");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    System.out.println("Gabim: Fajlli i dhene nuk eshte celes valid.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
             } else {
                 String keyFromUrl = sendGET(filePath);
                 Document doc = convertStringToXMLDocument(keyFromUrl);
@@ -86,7 +98,7 @@ public class ExportImport {
                 String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
                 String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
-                if(eElement.getElementsByTagName("P").getLength()>0) {
+                if (eElement.getElementsByTagName("P").getLength() > 0) {
                     StringBuilder sb = new StringBuilder();
 
                     sb.append("<RSAKeyValue>" + NL);
@@ -94,25 +106,24 @@ public class ExportImport {
                     sb.append(getElement("Exponent", exponent));
                     sb.append("</RSAKeyValue>");
 
-                    String x = "../keys/" + user + ".pub.xml";
-                    writeFile(sb.toString(),x);
+                    String x = "./keys/" + user + ".pub.xml";
+                    writeFile(sb.toString(), x);
                     System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
 
                     String text = sendGET(filePath);
-                    String y = "../keys/" + user + ".xml";
-                    writeFile(text,y);
+                    String y = "./keys/" + user + ".xml";
+                    writeFile(text, y);
                     System.out.println("Celesi privat u ruajt ne fajllin '" + y + "'.");
-                }else{
+                } else {
                     String text = sendGET(filePath);
-                    String x = "../keys/" + user + ".pub.xml";
-                    writeFile(text,x);
+                    String x = "./keys/" + user + ".pub.xml";
+                    writeFile(text, x);
                     System.out.println("Celesi publik u ruajt ne fajllin '" + x + "'.");
                 }
             }
-        }catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println("Krijimi i XML doc me permbajtje te URL deshtoi.");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -125,28 +136,28 @@ public class ExportImport {
         StringBuilder sb = new StringBuilder();
         try {
             File file = new File(fileName);
-            if ((file.exists())){
+            if ((file.exists())) {
                 Scanner reader = new Scanner(file);
-                while(reader.hasNextLine()){
+                while (reader.hasNextLine()) {
                     sb.append(reader.nextLine() + "\n");
                 }
                 reader.close();
-            }
-            else
-                sb.append("Gabim: Celesi " + type +" '" + user + "' nuk ekziston.");
-        }catch (Exception e){
+            } else
+                sb.append("Gabim: Celesi " + type + " '" + user + "' nuk ekziston.");
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return sb.toString();
     }
-    public void writeFile(String text, String filename) throws Exception{
+
+    public void writeFile(String text, String filename) throws Exception {
         PrintWriter writer = new PrintWriter(filename);
-        try{
+        try {
             writer.write(text);
             System.out.println("Celesi publik u ruajt ne fajllin '" + filename + "'.");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getMessage();
-        }finally {
+        } finally {
             writer.close();
         }
 
@@ -157,7 +168,7 @@ public class ExportImport {
         if ((file.exists())) {
             file.delete();
         } else
-            System.out.println("Gabim tek fshirja: Celesi '"+ user +"' nuk ekziston.");
+            System.out.println("Gabim tek fshirja: Celesi '" + user + "' nuk ekziston.");
     }
 
     //Metoda per ta marre celesin nga url
@@ -165,7 +176,7 @@ public class ExportImport {
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
-        con.setRequestProperty("User-Agent","Mozilla/5.0");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
         int responseCode = con.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
             BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -186,19 +197,20 @@ public class ExportImport {
 
 
     //Metoda per konvertimin e nje permbajtje String ne XML document, qe perdoret kur kemi import-key me URL
-    public  Document convertStringToXMLDocument(String xmlString)
-    {
+    public Document convertStringToXMLDocument(String xmlString) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
-        try
-        {
+        try {
             builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
             return doc;
-        }
-        catch (SAXParseException | ParserConfigurationException e) {
+        } catch (SAXParseException e ) {
             System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
-        } catch (IOException | SAXException e) {
+        } catch (IOException e) {
+            System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
+        }catch (ParserConfigurationException e){
+            System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
+        }catch (SAXException e){
             System.out.println("Gabim: URL i dhene nuk eshte valide ose nuk permban ndonje celes valid.");
         }
         return null;
@@ -206,14 +218,12 @@ public class ExportImport {
 
 
     //Metoda per ta kontrolluar se a eshte valide nje url e dhene
-    public  boolean isValidURL(String urlString){
-        try
-        {
+    public boolean isValidURL(String urlString) {
+        try {
             URL url = new URL(urlString);
             url.toURI();
             return true;
-        } catch (Exception exception)
-        {
+        } catch (Exception exception) {
             return false;
         }
     }

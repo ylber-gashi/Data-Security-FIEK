@@ -8,6 +8,7 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 
+
 public class CreateDelete {
     static final String KEY_ALGORITHM = "RSA";
     static final int KEY_LENGTH = 1024;
@@ -19,9 +20,9 @@ public class CreateDelete {
         PublicKey publicKey = keyPair.getPublic();
 
         String privateKeyAsXml = savePrivateKeyAsXml(privateKey);
-        writeFile(privateKeyAsXml, "../keys/" +user + ".xml");
+        writeFile(privateKeyAsXml, "./keys/" +user + ".xml");
         String publicKeyAsXml = savePublicKeyAsXml(publicKey);
-        writeFile(publicKeyAsXml, "../keys/" +user + ".pub.xml");
+        writeFile(publicKeyAsXml, "./keys/" +user + ".pub.xml");
         System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
         System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
     }
@@ -73,8 +74,8 @@ public class CreateDelete {
     }
 
     public void deleteUser(String user) {
-        File publik = new File("../keys/"+user+".pub.xml");
-        File privat = new File("../keys/"+user+".xml");
+        File publik = new File("./keys/"+user+".pub.xml");
+        File privat = new File("./keys/"+user+".xml");
         if (user.equals(user) && (publik.exists() || privat.exists())) {
             if (publik.delete()) {
                 System.out.println("Eshte larguar celesi publik: '" + "keys/" + user + ".pub.xml" + "' ");

@@ -4,15 +4,15 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.IOException;
 
 public class ds {
-    public static void main(String[] args)throws ArrayIndexOutOfBoundsException, IOException, LineUnavailableException, InterruptedException 
+    public static void main(String[] args)throws Exception,ArrayIndexOutOfBoundsException, IOException, LineUnavailableException, InterruptedException
     {
         Caesar caesar = new Caesar();
         MorseCode morseCode=new MorseCode();
         Count count=new Count();
         CreateDelete cd = new CreateDelete();
         ExportImport ex =  new ExportImport();
-       
-        
+        WriteRead wr = new WriteRead();
+
         if(args.length < 2 || args.length >4){
            System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
            System.exit(1);
@@ -139,7 +139,7 @@ public class ds {
             }
         }
         else if("write-message".equals(args[0])){
-            WriteRead wr = new WriteRead(args[1]);
+            wr.setName(args[1]);
             if(args.length == 4){
                 wr.Write(args[2],args[3]);
             }else if(args.length == 3){
@@ -153,7 +153,6 @@ public class ds {
             }
         }
         else if("read-message".equals(args[0])){
-            WriteRead wr = new WriteRead();
             if(args.length == 2) {
                 wr.Read(args[1]);
             }else{
