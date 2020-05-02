@@ -118,6 +118,7 @@ public class ds {
             else {
                 System.out.println("Nuk jane dhene komanda valide.\n");
                 System.out.println("Komanda import-key duhet te jepet sipas kesaj skeme: import-key <name> <path>\n");
+           }
         }
         else if("create-user".equals(args[0])){
             if(args.length == 2){
