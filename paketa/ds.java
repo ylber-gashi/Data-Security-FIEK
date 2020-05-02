@@ -100,9 +100,9 @@ public class ds {
             }
         }
         else if("export-key".equals(args[0])){
-            if(args.length == 3){
+            if(args.length == 3 && (args[1].equals("public") || args[1].equals("private"))){
                 ex.exportKey(args[1],args[2],null);
-            }else if (args.length == 4)
+            }else if (args.length == 4 && (args[1].equals("public") || args[1].equals("private")))
                 ex.exportKey(args[1],args[2],args[3]);
             else {
                 System.out.println("Nuk jane dhene komanda valide.\n");
