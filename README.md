@@ -130,7 +130,7 @@ direktoriumittëçelësave keys)
 
 
 
-### FAZA 1
+### FAZA 2
 	create-user
 
 ![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/4.PNG)
