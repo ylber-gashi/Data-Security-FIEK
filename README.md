@@ -53,23 +53,23 @@ direktoriumittëçelësave keys)
 
 -Per funksionin **_morse-code_**:
 
-	java paketa.ds morse-code encode/decode &lt;text>/&lt;morse code>
+	java paketa.ds morse-code encode/decode <text>/<morse code>
 
-	java paketa.ds morse-code beep &lt;text>
+	java paketa.ds morse-code beep <;text>
 
 
 -Per funksionin **_caesar_**:
 
-	java paketa.ds caesar encrypt/decrypt &lt;key> &lt;plain text>/&lt;cipher text>
+	java paketa.ds caesar encrypt/decrypt <key> <plain text>/<cipher text>
 
-	java paketa.ds caesar brute-force &lt;cipher text>
+	java paketa.ds caesar brute-force <cipher text>
 
 
 -Per funksionin **_count_**:
 
-	java paketa.ds count lines/words/letters/symbols &lt;text>
+	java paketa.ds count lines/words/letters/symbols <text>
 
-	java paketa.ds count characters/vowels/consonants/spaces &lt;text>
+	java paketa.ds count characters/vowels/consonants/spaces <text>
     
     
 ### Faza 2
