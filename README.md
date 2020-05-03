@@ -47,7 +47,7 @@ direktoriumittëçelësave keys)
 
 
 1. Së pari e bëni compile duke përdorur komandën: 
-	javac paketa\ds.java
+	**javac paketa\ds.java**
 (sigurohuni të jeni në path-in e duhur)
 2. Së dyti, për të ekzekutuar një nga funksionet e programit duhet t’i shkruani komandat në këtë format: 
 
