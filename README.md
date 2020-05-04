@@ -198,3 +198,13 @@ direktoriumittëçelësave keys)
 2. [https://www.thejavaprogrammer.com/caesar-cipher-java-encryption-decryption/?fbclid=IwAR2gvwtkMhrTBIQ4C6wxrD55jYZhD2kNldBwvgDVLd3jxFpsvJMfuMA0QUM](https://www.thejavaprogrammer.com/caesar-cipher-java-encryption-decryption/?fbclid=IwAR2gvwtkMhrTBIQ4C6wxrD55jYZhD2kNldBwvgDVLd3jxFpsvJMfuMA0QUM) (Në të cilin jemi mbështetur gjatë realizimit të funksionit caesar)
 
 3. [https://stackoverflow.com/a/5864174](https://stackoverflow.com/a/5864174) (Këtu jemi bazuar për ta realizuar komanden words tek funksioni count)
+
+4. [https://www.novixys.com/blog/how-to-generate-rsa-keys-java/](https://www.novixys.com/blog/how-to-generate-rsa-keys-java/)
+
+5. https://www.tutorialspoint.com/generate-random-bytes-in-java
+
+6. https://gist.github.com/itarato/abef95871756970a9dad
+
+7. https://mkyong.com/java/jce-encryption-data-encryption-standard-des-tutorial/
+
+8. https://metacpan.org/pod/MIME::Base64
