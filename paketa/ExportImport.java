@@ -160,7 +160,7 @@ public class ExportImport {
         PrintWriter writer = new PrintWriter(filename);
         try {
             writer.write(text);
-            System.out.println("Celesi publik u ruajt ne fajllin '" + filename + "'.");
+            System.out.println("Celesi "+type+" u ruajt ne fajllin '" + filename + "'.");
         } catch (Exception e) {
             e.getMessage();
         } finally {
