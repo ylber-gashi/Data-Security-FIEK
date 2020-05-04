@@ -20,11 +20,18 @@ public class CreateDelete {
         PublicKey publicKey = keyPair.getPublic();
 
         String privateKeyAsXml = savePrivateKeyAsXml(privateKey);
-        writeFile(privateKeyAsXml, "./keys/" +user + ".xml");
-        String publicKeyAsXml = savePublicKeyAsXml(publicKey);
-        writeFile(publicKeyAsXml, "./keys/" +user + ".pub.xml");
-        System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
-        System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
+        File fajlliPub = new File("./keys/" +user + ".pub.xml");
+        File fajlliPriv = new File("./keys/" +user + ".xml");
+        if(!(fajlliPub.exists() && fajlliPriv.exists())) {
+            writeFile(privateKeyAsXml, "./keys/" + user + ".xml");
+            String publicKeyAsXml = savePublicKeyAsXml(publicKey);
+            writeFile(publicKeyAsXml, "./keys/" + user + ".pub.xml");
+            System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
+            System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
+        }
+        else{
+            System.out.println("Gabim: Celesi '"+user+"' ekziston paraprakisht.");
+        }
     }
 
     public KeyPair createKeyPair(int keyLength) throws NoSuchAlgorithmException {
