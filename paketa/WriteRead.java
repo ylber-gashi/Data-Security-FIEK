@@ -68,29 +68,35 @@ public class WriteRead {
     }
 
     public PrivateKey getPrivateElements(String user) throws Exception {
-        File file = new File("./keys/"+user+".xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(file);
-        doc.getDocumentElement().normalize();
+        try {
+            File file = new File("./keys/" + user + ".xml");
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
 
-        NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
-        Node node = nodeList.item(0);
+            NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+            Node node = nodeList.item(0);
 
-        Element eElement = (Element) node;
-        String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
-        String d = eElement.getElementsByTagName("D").item(0).getTextContent();
-        KeyFactory rsaFactory = KeyFactory.getInstance("RSA");
+            Element eElement = (Element) node;
+            String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+            String d = eElement.getElementsByTagName("D").item(0).getTextContent();
+            KeyFactory rsaFactory = KeyFactory.getInstance("RSA");
 
-        byte[] modBytes = modulus.getBytes();
-        byte[] dBytes = d.getBytes();
-        BigInteger modBigInt = new BigInteger(1, Base64.getDecoder().decode(modBytes));
-        BigInteger dBigInt = new BigInteger(1,Base64.getDecoder().decode(dBytes));
+            byte[] modBytes = modulus.getBytes();
+            byte[] dBytes = d.getBytes();
+            BigInteger modBigInt = new BigInteger(1, Base64.getDecoder().decode(modBytes));
+            BigInteger dBigInt = new BigInteger(1, Base64.getDecoder().decode(dBytes));
 
-        RSAPrivateKeySpec rsaKeyspec = new RSAPrivateKeySpec(modBigInt,dBigInt);
-        PrivateKey key = rsaFactory.generatePrivate(rsaKeyspec);
+            RSAPrivateKeySpec rsaKeyspec = new RSAPrivateKeySpec(modBigInt, dBigInt);
+            PrivateKey key = rsaFactory.generatePrivate(rsaKeyspec);
 
-        return key;
+            return key;
+        }catch (FileNotFoundException e) {
+            System.out.println("Gabim: Celesi privat '" + user + "' nuk ekziston.");
+            System.exit(1);
+        }
+        return null;
     }
 
     public  String encrypt(String plainText) throws Exception {
