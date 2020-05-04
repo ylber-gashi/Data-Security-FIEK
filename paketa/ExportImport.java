@@ -104,8 +104,9 @@ public class ExportImport {
                 String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
 
                 if (eElement.getElementsByTagName("P").getLength() > 0) {
+                    String type = "privat";
+                    
                     StringBuilder sb = new StringBuilder();
-
                     sb.append("<RSAKeyValue>" + NL);
                     sb.append(getElement("Modulus", modulus));
                     sb.append(getElement("Exponent", exponent));
