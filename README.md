@@ -33,9 +33,9 @@ Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 1.
 *	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
 direktoriumittëçelësave keys)
-*	**delete-user** (I largontëgjithë çelësat ekzistues të shfrytëzuesit.)
+*	**delete-user** (I largon të gjithë çelësat ekzistues të shfrytëzuesit.)
 2. 
-*	**export-key** (Eksporton çelësin publik ose privat t ëshfrytëzuesit nga direktoriumi i çelësave.)
+*	**export-key** (Eksporton çelësin publik ose privat të shfrytëzuesit nga direktoriumi i çelësave.)
 *	**import-key** (Importon çelësin publik ose privat të shfrytëzuesit nga shtegu i dhënë dhe e vendos në direktoriumin e çelësave.)
 3.
 *	**write-message** (E shkruan një mesazh të enkriptuar të dedikuar për një shfrytëzues.)
