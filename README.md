@@ -41,6 +41,7 @@ direktoriumittëçelësave keys)
 *	**write-message** (E shkruan një mesazh të enkriptuar të dedikuar për një shfrytëzues.)
 *	**read-message** (E dekripton dhe e shfaq në console mesazhin e enkriptuar.)
 
+### FAZA 3
 
 
 ## Për ekzekutimin e programit duhet ti ndjekni këto hapa:
@@ -99,7 +100,9 @@ direktoriumittëçelësave keys)
 -Per komandën **_read-message_**:
 
 	java paketa.ds read-message <encrypted-message>
-	
+
+### FAZA 3
+
 	
 ## Shembuj të përdorimit të komandave:
 ### FAZA 1
@@ -188,6 +191,7 @@ direktoriumittëçelësave keys)
 ![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/9.PNG)
 
 
+### FAZA 3
 
 ## Referencat:
 
