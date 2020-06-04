@@ -102,7 +102,29 @@ direktoriumittëçelësave keys)
 	java paketa.ds read-message <encrypted-message>
 
 ### FAZA 3
+-Per komandën **_create-user_**:
+	
+	java paketa.ds create-user <name>
+	
+-Per komandën **_delete-user_**:
 
+	java paketa.ds delete-user <name>
+	
+-Per komandën **login**:
+
+	java paketa.ds 
+	
+-Per komandën **status**:
+
+	java paketa.ds 
+	
+-Per komandën **_write-message_**:
+
+	java paketa.ds write-message
+	
+-Per komandën **_read-message_**:
+
+	java paketa.ds read-message <encrypted-message>
 	
 ## Shembuj të përdorimit të komandave:
 ### FAZA 1
