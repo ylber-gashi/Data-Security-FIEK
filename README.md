@@ -42,7 +42,16 @@ direktoriumittëçelësave keys)
 *	**read-message** (E dekripton dhe e shfaq në console mesazhin e enkriptuar.)
 
 ### FAZA 3
-
+1.
+*	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
+direktoriumittëçelësave keys)
+*	**delete-user** (I largon të gjithë çelësat ekzistues të shfrytëzuesit.)
+2. 
+*	**login** ()
+*	**status** ()
+3.
+*	**write-message** ()
+*	**read-message** ()
 
 ## Për ekzekutimin e programit duhet ti ndjekni këto hapa:
 
