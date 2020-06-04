@@ -223,6 +223,60 @@ direktoriumittëçelësave keys)
 
 
 ### FAZA 3
+	create-user
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/10.PNG)
+
+
+    
+
+
+
+
+	delete-user
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/11.PNG)
+
+
+    
+
+
+
+
+	login
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/12.PNG)    
+
+
+    
+
+
+
+
+	status
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/13.PNG)
+
+
+    
+
+
+
+
+	write-message
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/14.PNG)
+
+
+    
+
+
+
+
+	read-message
+
+![](https://github.com/ylber-gashi/Siguria2020/blob/master/Images/15.PNG)
+
 
 ## Referencat:
 
