@@ -6,7 +6,7 @@ public class LoginStatus {
         System.out.println("Jepni fjalekalimin: ");
         Scanner input = new Scanner(System.in);
         String inputPass = input.nextLine();
-        boolean isValid = validateUser(inputPass);
+        boolean isValid = validateUser(username, inputPass);
 
         if(isValid){
             String tokeni = generateToken(username);
@@ -19,6 +19,26 @@ public class LoginStatus {
 
     public void status(String token) throws Exception {
        
+    }
+    
+    public boolean validateUser(String user,String inputPW) throws Exception {
+        String query = "SELECT salt,passwordd FROM users WHERE username = "+user+";";
+        String password="",salt="";
+        Connection connection = dbConnection.getConnection();
+        ResultSet rs = statement.executeQuery(query);
+
+        while(rs.next()){
+            salt = rs.getString("salt");
+            password = rs.getString("passwordd");
+        }
+        
+        byte[] byteSalt = Base64.getDecoder().decode(salt);
+        String checkPassword = SHA1SecurePassword(inputPW,byteSalt);
+
+        if(password.equals(checkPassword)){
+            return true;
+        }else
+            return false;
     }
 
     public String generateToken(String user) throws Exception {
