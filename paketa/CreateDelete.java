@@ -67,7 +67,17 @@ public class CreateDelete {
         KeyPair keyPair = keygen.generateKeyPair();
         return keyPair;
     }
+    public boolean validatePassword(String password){
+        String regex = "^(?=.*[0-9])(?=.*[a-z]).{8,20}$";
+        Pattern pattern = Pattern.compile(regex);
 
+        if(password == null){
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
         RSAPrivateCrtKeySpec spec = keyFactory.getKeySpec(privateKey, RSAPrivateCrtKeySpec.class);
