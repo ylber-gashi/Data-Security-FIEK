@@ -43,7 +43,22 @@ public class LoginStatus {
     }
 
     public String generateToken(String user) throws Exception {
+        String uname = Base64.getEncoder().encodeToString(user.getBytes());
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dataSkadimit = Base64.getEncoder().encodeToString(dtf.format(now).getBytes());
+
+        byte[] user1 = Base64.getDecoder().decode(uname.getBytes());
+        byte[] date = Base64.getDecoder().decode(dataSkadimit.getBytes());
+
+        //Concat two byte arrays
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+        outputStream.write( user1 );
+        outputStream.write( date );
+        byte[] signatureData = outputStream.toByteArray( ); //te dhenat qe nenshkruhen
+
+        return uname + "." + dataSkadimit + "." + Signature(user,signatureData); //tokeni
     }
 
     public String Signature(String user,byte[] userdate) throws Exception {
