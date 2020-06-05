@@ -33,6 +33,20 @@ public class LoginStatus {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now(); //leximi i dates aktuale qe e krahasojme me daten e skadimit
         
+        Signature sign = Signature.getInstance("SHA256withRSA");
+        PublicKey publicKey = getPublicElements(user); //e marrim celesin publik per verifikim te nenshkrimit
+
+        byte[] user1 = Base64.getDecoder().decode(textArray[0].getBytes()); //emri i userit i dekoduar nga base64
+        byte[] date = Base64.getDecoder().decode(textArray[1].getBytes()); //data e dekoduar nga base64
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+        outputStream.write( user1 );
+        outputStream.write( date );
+        byte[] signatureData = outputStream.toByteArray( ); //permbajtja e nenshkrimit qe e perdorim edhe per verifikim
+
+        sign.initVerify(publicKey);
+        sign.update(signatureData);
+        
         if(now.isBefore(datee)) {
             isValid = "Po";
         }else
