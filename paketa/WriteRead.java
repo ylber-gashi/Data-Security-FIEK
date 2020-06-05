@@ -190,11 +190,11 @@ public class WriteRead {
         return sb.toString();
     }
 
-    public void Write(String plaintext,String filePath) throws Exception {
+    public void Write(String name,String plaintext,String filePath,String token) throws Exception {
         if(filePath==null){
-            System.out.println(encryptWrite(plaintext));
+            System.out.println(encryptWrite(name,plaintext,token));
         }else{
-            String text = encryptWrite(plaintext);
+            String text = encryptWrite(name,plaintext,token);
             writeFile(text,filePath);
             System.out.println("Mesazhi i enkriptuar u ruajt ne fajllin "+filePath);
         }
