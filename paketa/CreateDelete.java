@@ -20,14 +20,41 @@ public class CreateDelete {
         PublicKey publicKey = keyPair.getPublic();
 
         String privateKeyAsXml = savePrivateKeyAsXml(privateKey);
-        File fajlliPub = new File("./keys/" +user + ".pub.xml");
-        File fajlliPriv = new File("./keys/" +user + ".xml");
+        File fajlliPub = new File("keys/" +user + ".pub.xml");
+        File fajlliPriv = new File("keys/" +user + ".xml");
         if(!(fajlliPub.exists() && fajlliPriv.exists())) {
-            writeFile(privateKeyAsXml, "./keys/" + user + ".xml");
-            String publicKeyAsXml = savePublicKeyAsXml(publicKey);
-            writeFile(publicKeyAsXml, "./keys/" + user + ".pub.xml");
-            System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
-            System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
+            System.out.print("Jepni fjalekalimin: ");
+//            Scanner input1 = new Scanner(System.in);
+//            String pass = input1.nextLine();
+            Console console1 = System.console();
+            char[] passChar = console1.readPassword();
+            String pass = String.valueOf(passChar);
+            if(validatePassword(pass))
+            {
+                System.out.print("Perserit fjalekalimin: ");
+//                Scanner input2 = new Scanner(System.in);
+//                String repeatPass = input2.nextLine();
+                Console console2 = System.console();
+                char[] passChar2 = console2.readPassword();
+                String repeatPass = String.valueOf(passChar2);
+                if(repeatPass.equals(pass)) {
+                    byte[] salt = getSalt();
+                    String password = SHA1SecurePassword(pass, salt);
+                    String saltedString = Base64.getEncoder().encodeToString(salt);
+                    insertUser(user, saltedString, password);
+                    writeFile(privateKeyAsXml, "./keys/" + user + ".xml");
+                    String publicKeyAsXml = savePublicKeyAsXml(publicKey);
+                    writeFile(publicKeyAsXml, "./keys/" + user + ".pub.xml");
+                    System.out.println("Eshte krijuar shfrytezuesi '" + user + "'");
+                    System.out.println("Eshte krijuar celesi publik: " + user + ".pub.xml");
+                    System.out.println("Eshte krijuar celesi privat: " + user + ".xml");
+                }else {
+                    System.out.println("Fjalekalimet nuk perputhen.");
+                }
+            }
+            else {
+                System.out.println("Gabim: Fjalekalimi duhet te permbaje se paku nje numer ose simbol.");
+            }
         }
         else{
             System.out.println("Gabim: Celesi '"+user+"' ekziston paraprakisht.");
