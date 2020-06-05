@@ -47,10 +47,18 @@ public class LoginStatus {
         sign.initVerify(publicKey);
         sign.update(signatureData);
         
-        if(now.isBefore(datee)) {
+        boolean bool = sign.verify(signatureText);
+        sb.append("User: "+user);
+        sb.append("\n");
+
+        if(bool && now.isBefore(datee)) {
             isValid = "Po";
         }else
             isValid = "Jo";
+        sb.append("Valid: "+isValid);
+        sb.append("\n");
+        sb.append("Skadimi: " + dateTime);
+        System.out.println(sb.toString());
     }
     
     public boolean validateUser(String user,String inputPW) throws Exception {
