@@ -167,11 +167,26 @@ public class WriteRead {
 
         String deskey = decrypt(textArray[2],user);
         StringBuilder sb = new StringBuilder();
-        sb.append("Pranuesi: ");
+        sb.append("Marresi: ");
         sb.append(user);
         sb.append("\n");
         sb.append("Mesazhi: ");
         sb.append(decryptTextDES(textArray[3],textArray[1], deskey));
+        sb.append("\n");
+
+        if(textArray.length==6){
+            String derguesi = new String(Base64.getDecoder().decode(textArray[4].getBytes()));
+            sb.append("Derguesi: ");
+            sb.append(derguesi);
+            sb.append("\n");
+            sb.append("Nenshkrimi: ");
+            byte[] byteMessage = Base64.getDecoder().decode(textArray[3].getBytes());
+            if(isValidSignature(derguesi,textArray[5],byteMessage)){
+                sb.append("valid");
+            }else{
+                sb.append("mungon celesi publik " + derguesi);
+            }
+        }
         return sb.toString();
     }
 
