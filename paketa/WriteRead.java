@@ -26,14 +26,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class WriteRead {
-    private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public PublicKey getPublicElements() throws Exception {
-    try {
+    public PublicKey getPublicElements(String name) throws Exception {
+        try {
             File file = new File("./keys/" + name + ".pub.xml");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
