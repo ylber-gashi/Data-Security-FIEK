@@ -141,11 +141,23 @@ public class WriteRead {
         return new String(cipher.doFinal(bytes));
     }
 
-    public String encryptWrite(String plaintext) throws Exception {
+    public String encryptWrite(String name,String plaintext,String token) throws Exception {
         String IV = Base64.getEncoder().encodeToString(generateIV().getIV());
         String deskey = Base64.getEncoder().encodeToString(generateDESKey().getEncoded());
         String uname = Base64.getEncoder().encodeToString(name.getBytes());
-        return uname + "." + IV + "." + encrypt(deskey) + "." + encryptTextDES(plaintext, IV, deskey);
+
+        byte[] byteEncryptedMessage = encryptTextDES(plaintext, IV, deskey);
+        String encryptedMessage = Base64.getEncoder().encodeToString(byteEncryptedMessage);
+
+        if(token == null){
+            return uname + "." + IV + "." + encrypt(name,deskey) + "." + encryptedMessage;
+        }else if(isValidToken(token)){
+            String[] textArray = token.split("\\.");
+            String sender = new String(Base64.getDecoder().decode(textArray[0].getBytes()));
+
+            return uname + "." + IV + "." + encrypt(name,deskey) + "." + encryptedMessage + "." + textArray[0] + "." + Signature(sender,byteEncryptedMessage);
+        }else
+            return "Tokeni nuk eshte valid";
     }
 
     public String decryptRead(String ciphertext) throws Exception {
