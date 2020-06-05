@@ -18,7 +18,14 @@ public class LoginStatus {
     }
 
     public void status(String token) throws Exception {
-       
+        String[] textArray = token.split("\\.");
+
+        StringBuilder sb = new StringBuilder();
+        String isValid = "";
+
+        String user = new String(Base64.getDecoder().decode(textArray[0].getBytes())); //useri lexohet nga tokeni
+        String dateTime = new String(Base64.getDecoder().decode(textArray[1].getBytes())); //data skadimit lexohet nga tokeni
+        byte[] signatureText = Base64.getDecoder().decode(textArray[2]); //nenshkrimi lexohet nga tokeni
     }
     
     public boolean validateUser(String user,String inputPW) throws Exception {
