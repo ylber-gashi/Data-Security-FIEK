@@ -22,9 +22,10 @@ public class LoginStatus {
     }
     
     public boolean validateUser(String user,String inputPW) throws Exception {
-        String query = "SELECT salt,passwordd FROM users WHERE username = "+user+";";
+        String query = "SELECT salt,passwordd FROM users WHERE username = '"+user+"';";
         String password="",salt="";
         Connection connection = dbConnection.getConnection();
+        Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(query);
 
         while(rs.next()){
