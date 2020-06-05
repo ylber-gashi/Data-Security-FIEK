@@ -61,8 +61,12 @@ public class LoginStatus {
         return uname + "." + dataSkadimit + "." + Signature(user,signatureData); //tokeni
     }
 
-    public String Signature(String user,byte[] userdate) throws Exception {
-
+    public String Signature(String user,byte[] userANDexpireDate) throws Exception {
+        PrivateKey privateKey = getPrivateElements(user);
+        Signature sign = Signature.getInstance("SHA256withRSA"); //nenshkrimi sipas algoritmit SHA256 me RSA
+        sign.initSign(privateKey);
+        sign.update(userANDexpireDate); //te dhenat qe nenshkruhen
+        return Base64.getEncoder().encodeToString(sign.sign());
     }
 
 
