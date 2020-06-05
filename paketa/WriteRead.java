@@ -216,4 +216,39 @@ public class WriteRead {
         }
         return sb.toString();
     }
+
+    public boolean isValidToken(String token) throws Exception {
+        String[] textArray = token.split("\\.");
+
+        String user = new String(Base64.getDecoder().decode(textArray[0].getBytes()));
+        String dateTime = new String(Base64.getDecoder().decode(textArray[1].getBytes()));
+
+        byte[] signatureText = Base64.getDecoder().decode(textArray[2]);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+        LocalDateTime datee = LocalDateTime.parse(dateTime, formatter);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
+        Signature sign = Signature.getInstance("SHA256withRSA");
+        PublicKey publicKey = getPublicElements(user);
+
+        byte[] user1 = Base64.getDecoder().decode(textArray[0].getBytes());
+        byte[] date = Base64.getDecoder().decode(textArray[1].getBytes());
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+        outputStream.write( user1 );
+        outputStream.write( date );
+        byte[] signatureData = outputStream.toByteArray( );
+
+        sign.initVerify(publicKey);
+        sign.update(signatureData);
+
+        boolean bool = sign.verify(signatureText);
+        if(bool && now.isBefore(datee)) {
+            return true;
+        }else
+            return false;
+    }
 }
