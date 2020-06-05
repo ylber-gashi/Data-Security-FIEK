@@ -251,4 +251,12 @@ public class WriteRead {
         }else
             return false;
     }
+
+    public String Signature(String user,byte[] bytes) throws Exception {
+        PrivateKey key = getPrivateElements(user);
+        Signature sign = Signature.getInstance("SHA256withRSA");
+        sign.initSign(key);
+        sign.update(bytes);
+        return Base64.getEncoder().encodeToString(sign.sign());
+    }
 }
