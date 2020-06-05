@@ -28,7 +28,11 @@ public class ExportImport {
             name = "./keys/" + user + ".xml";
         }
         if (filepath == null) {
-            System.out.println(readFile(name, user, type));
+	if(readFile(name, user, type) == null){
+		System.out.println("Gabim: Celesi " + type + " '" + user + "' nuk ekziston.");
+	}else{
+            		System.out.println(readFile(name, user, type));
+	}
         } else {
             String text = readFile(name, user, type);
             if(text != null) {
@@ -148,8 +152,9 @@ public class ExportImport {
                     sb.append(reader.nextLine() + "\n");
                 }
                 reader.close();
-            } else
-                sb.append("Gabim: Celesi " + type + " '" + user + "' nuk ekziston.");
+            } else{
+	return null;
+	}
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -157,10 +162,6 @@ public class ExportImport {
     }
 
     public void writeFileEXPORT(String type,String text, String filename) throws Exception {
-        File file = new File(filename);
-        if(!file.exists()){
-            System.out.println("Gabim: Celesi '"+filename+"' nuk ekziston.\n");
-        }else{
             PrintWriter writer = new PrintWriter(filename);
             try {
                 writer.write(text);
@@ -171,7 +172,6 @@ public class ExportImport {
                 writer.close();
             }
         }
-    }
     
     public void writeFile(String type, String text, String filename) throws Exception {
         File fajlli = new File(filename);
