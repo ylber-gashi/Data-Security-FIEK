@@ -6,6 +6,15 @@ public class LoginStatus {
         System.out.println("Jepni fjalekalimin: ");
         Scanner input = new Scanner(System.in);
         String inputPass = input.nextLine();
+        boolean isValid = validateUser(inputPass);
+
+        if(isValid){
+            String tokeni = generateToken(username);
+            System.out.println("Token: "+tokeni);
+        }
+        else {
+            System.out.println("Gabim: shfrytezuesi ose fjalekalimi i gabuar.");
+        }
     }
 
     public void status(String token) throws Exception {
