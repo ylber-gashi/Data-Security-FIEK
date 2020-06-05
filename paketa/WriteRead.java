@@ -274,4 +274,19 @@ public class WriteRead {
         sign.update(bytes);
         return Base64.getEncoder().encodeToString(sign.sign());
     }
+
+    public boolean isValidSignature(String derguesi,String nenshkrimi,byte[] byteMsg) throws Exception {
+        byte[] signatureText = Base64.getMimeDecoder().decode(nenshkrimi);
+
+        Signature sign = Signature.getInstance("SHA256withRSA");
+        PublicKey publicKey = getPublicElements(derguesi);
+
+        sign.initVerify(publicKey);
+        sign.update(byteMsg);
+        boolean bool = sign.verify(signatureText);
+        if(bool){
+            return true;
+        }else
+            return false;
+    }
 }
