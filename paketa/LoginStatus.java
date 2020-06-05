@@ -26,6 +26,17 @@ public class LoginStatus {
         String user = new String(Base64.getDecoder().decode(textArray[0].getBytes())); //useri lexohet nga tokeni
         String dateTime = new String(Base64.getDecoder().decode(textArray[1].getBytes())); //data skadimit lexohet nga tokeni
         byte[] signatureText = Base64.getDecoder().decode(textArray[2]); //nenshkrimi lexohet nga tokeni
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+        LocalDateTime datee = LocalDateTime.parse(dateTime, formatter); //parsimi i dates qe e marrim nga tokeni si string
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now(); //leximi i dates aktuale qe e krahasojme me daten e skadimit
+        
+        if(now.isBefore(datee)) {
+            isValid = "Po";
+        }else
+            isValid = "Jo";
     }
     
     public boolean validateUser(String user,String inputPW) throws Exception {
