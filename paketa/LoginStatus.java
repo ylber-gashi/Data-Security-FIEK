@@ -46,7 +46,7 @@ public class LoginStatus {
         String uname = Base64.getEncoder().encodeToString(user.getBytes());
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now().plusMinutes(20);
         String dataSkadimit = Base64.getEncoder().encodeToString(dtf.format(now).getBytes());
 
         byte[] user1 = Base64.getDecoder().decode(uname.getBytes());
