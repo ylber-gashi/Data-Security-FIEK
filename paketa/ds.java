@@ -162,15 +162,7 @@ public class ds {
                 System.out.println("Komanda write-message nese deshironi vetem t'a ruani mesazhin e enkriptuar ne nje file duhet te jepet sipas kesaj skeme: \n" +
                         "write-message <name> <message> [file]' --sender <token>\n");
             }
-        }else if("login".equals(args[0])){
-            if(args.length == 2){
-                lg.login(args[1]);
-            }else{
-                System.out.println("Nuk jane dhene komanda valide.\n");
-                System.out.println("Komanda login duhet te jepet sipas kesaj skeme: \\n\" +\n\"' login <name>' \\n");
-            }
-        }
-        else if("read-message".equals(args[0])){
+        } else if("read-message".equals(args[0])){
             if(args.length == 2) {
                 wr.Read(args[1]);
             }else{
@@ -179,6 +171,22 @@ public class ds {
                         "' read-message <encrypted-message>' \n");
             }
         }
+        else if("login".equals(args[0])){
+            if(args.length == 2){
+                lg.login(args[1]);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda login duhet te jepet sipas kesaj skeme: \\n\" +\n\"' login <name>' \\n");
+            }
+        }else if("status".equals(args[0])){
+            if(args.length == 2){
+                lg.status(args[1]);
+            }else {
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda status duhet te jepet sipas kesaj skeme: \\n\" +\n\"' status <token>' \\n");
+            }
+        }
+
         else {
             System.out.println("\nInvalid arguments. Please use one of the program's functions as the first argument: \n" +
                     " morse-code\n" +
