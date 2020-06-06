@@ -1,12 +1,18 @@
 package paketa;
 
+import java.io.Console;
 import java.io.File;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.Base64;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 
 public class CreateDelete {
