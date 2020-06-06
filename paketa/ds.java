@@ -139,17 +139,28 @@ public class ds {
             }
         }
         else if("write-message".equals(args[0])){
-            wr.setName(args[1]);
             if(args.length == 4){
-                wr.Write(args[2],args[3]);
+                wr.Write(args[1],args[2],args[3],null);
             }else if(args.length == 3){
-                wr.Write(args[2],null);
+                wr.Write(args[1],args[2],null,null);
+            }else if(args.length == 6){
+                if("--sender".equals(args[4])){
+                    wr.Write(args[1],args[2],args[3],args[5]);
+                }else
+                    System.out.println("Nuk jane dhene komanda valide.");
+            }else if(args.length == 5){
+                if("--sender".equals(args[3])){
+                    wr.Write(args[1],args[2],null,args[4]);
+                }else
+                    System.out.println("LOPO");
             }else{
                 System.out.println("Nuk jane dhene komanda valide.\n");
                 System.out.println("Komanda write-message nese deshironi vetem t'a enkriptoni mesazhin tuaj duhet te jepet sipas kesaj skeme: \n" +
                         "'write-message <name> <message>' \n");
                 System.out.println("Komanda write-message nese deshironi vetem t'a ruani mesazhin e enkriptuar ne nje file duhet te jepet sipas kesaj skeme: \n" +
                         "write-message <name> <message> [file]' \n");
+                System.out.println("Komanda write-message nese deshironi vetem t'a ruani mesazhin e enkriptuar ne nje file duhet te jepet sipas kesaj skeme: \n" +
+                        "write-message <name> <message> [file]' --sender <token>\n");
             }
         }
         else if("read-message".equals(args[0])){
