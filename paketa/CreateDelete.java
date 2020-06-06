@@ -123,6 +123,15 @@ public class CreateDelete {
         statement.execute(query);
 
     }
+     public void deleteUserFromDB(String user) throws Exception {
+        String query = "DELETE FROM users WHERE username = '"+user+"';";
+        Connection connection = dbConnection.getConnection();
+        Statement statement = connection.createStatement();
+        int affectedRows = statement.executeUpdate(query,Statement.RETURN_GENERATED_KEYS);
+        if(affectedRows > 0 ){
+            System.out.println("Shfrytezuesi eshte fshire nga databaza.");
+        }
+    }
     
     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
