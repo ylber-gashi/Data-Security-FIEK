@@ -172,7 +172,7 @@ public class CreateDelete {
         return String.format("  <%s>%s</%s>%s", parameter, elementContent, parameter, NL);
     }
 
-    public void deleteUser(String user) {
+    public void deleteUser(String user) throws Exception {
         File publik = new File("./keys/"+user+".pub.xml");
         File privat = new File("./keys/"+user+".xml");
         if (user.equals(user) && (publik.exists() || privat.exists())) {
@@ -182,6 +182,7 @@ public class CreateDelete {
             if (privat.delete()) {
                 System.out.println("Eshte larguar celesi privat: '"+"keys/"+ user +".xml"+"' \n");
             }
+            deleteUserFromDB(user);
         }
         else
             System.out.println("Celesi '"+user+"' nuk ekziston");
