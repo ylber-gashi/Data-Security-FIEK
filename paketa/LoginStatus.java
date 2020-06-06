@@ -193,5 +193,37 @@ public class LoginStatus {
         }
         return null;
     }
+    
+    public PublicKey getPublicElements(String user) throws Exception {
+        try {
+            File file = new File("./keys/" + user + ".pub.xml");
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
+
+            NodeList nodeList = doc.getElementsByTagName("RSAKeyValue");
+            Node node = nodeList.item(0);
+            Element eElement = (Element) node;
+            String modulus = eElement.getElementsByTagName("Modulus").item(0).getTextContent();
+            String exponent = eElement.getElementsByTagName("Exponent").item(0).getTextContent();
+            KeyFactory rsaFactory = KeyFactory.getInstance("RSA");
+
+            byte[] modBytes = modulus.getBytes();
+            byte[] expBytes = exponent.getBytes();
+            BigInteger modBigInt = new BigInteger(1, Base64.getDecoder().decode(modBytes));
+            BigInteger expBigInt = new BigInteger(1,Base64.getDecoder().decode(expBytes));
+
+            RSAPublicKeySpec rsaKeyspec;
+            rsaKeyspec = new RSAPublicKeySpec(modBigInt,expBigInt);
+            PublicKey key = rsaFactory.generatePublic(rsaKeyspec);
+            return key;
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Gabim: Celesi publik '" + user + "' nuk ekziston.");
+            System.exit(1);
+        }
+        return null;
+    }
 
 }
