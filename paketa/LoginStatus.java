@@ -48,47 +48,54 @@ public class LoginStatus {
     }
 
     public void status(String token) throws Exception {
-        String[] textArray = token.split("\\.");
+        try{
+            String[] textArray = token.split("\\.");
 
-        StringBuilder sb = new StringBuilder();
-        String isValid = "";
+            StringBuilder sb = new StringBuilder();
+            String isValid = "";
 
-        String user = new String(Base64.getDecoder().decode(textArray[0].getBytes())); //useri lexohet nga tokeni
-        String dateTime = new String(Base64.getDecoder().decode(textArray[1].getBytes())); //data skadimit lexohet nga tokeni
-        byte[] signatureText = Base64.getDecoder().decode(textArray[2]); //nenshkrimi lexohet nga tokeni
+            String user = new String(Base64.getDecoder().decode(textArray[0].getBytes())); //useri lexohet nga tokeni
+            String dateTime = new String(Base64.getDecoder().decode(textArray[1].getBytes())); //data skadimit lexohet nga tokeni
+            byte[] signatureText = Base64.getDecoder().decode(textArray[2]); //nenshkrimi lexohet nga tokeni
         
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
-        LocalDateTime datee = LocalDateTime.parse(dateTime, formatter); //parsimi i dates qe e marrim nga tokeni si string
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+            LocalDateTime datee = LocalDateTime.parse(dateTime, formatter); //parsimi i dates qe e marrim nga tokeni si string
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now(); //leximi i dates aktuale qe e krahasojme me daten e skadimit
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now(); //leximi i dates aktuale qe e krahasojme me daten e skadimit
         
-        Signature sign = Signature.getInstance("SHA256withRSA");
-        PublicKey publicKey = getPublicElements(user); //e marrim celesin publik per verifikim te nenshkrimit
+            Signature sign = Signature.getInstance("SHA256withRSA");
+            PublicKey publicKey = getPublicElements(user); //e marrim celesin publik per verifikim te nenshkrimit
 
-        byte[] user1 = Base64.getDecoder().decode(textArray[0].getBytes()); //emri i userit i dekoduar nga base64
-        byte[] date = Base64.getDecoder().decode(textArray[1].getBytes()); //data e dekoduar nga base64
+            byte[] user1 = Base64.getDecoder().decode(textArray[0].getBytes()); //emri i userit i dekoduar nga base64
+            byte[] date = Base64.getDecoder().decode(textArray[1].getBytes()); //data e dekoduar nga base64
 
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
-        outputStream.write( user1 );
-        outputStream.write( date );
-        byte[] signatureData = outputStream.toByteArray( ); //permbajtja e nenshkrimit qe e perdorim edhe per verifikim
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+            outputStream.write( user1 );
+            outputStream.write( date );
+            byte[] signatureData = outputStream.toByteArray( ); //permbajtja e nenshkrimit qe e perdorim edhe per verifikim
 
-        sign.initVerify(publicKey);
-        sign.update(signatureData);
-        
-        boolean bool = sign.verify(signatureText);
-        sb.append("User: "+user);
-        sb.append("\n");
+            sign.initVerify(publicKey);
+            sign.update(signatureData);
+            boolean bool = sign.verify(signatureText);
+            if(bool && now.isBefore(datee)) {
+                isValid = "Po";
+            }else
+                isValid = "Jo";
 
-        if(bool && now.isBefore(datee)) {
-            isValid = "Po";
-        }else
-            isValid = "Jo";
-        sb.append("Valid: "+isValid);
-        sb.append("\n");
-        sb.append("Skadimi: " + dateTime);
-        System.out.println(sb.toString());
+            sb.append("User: "+user);
+            sb.append("\n");
+            sb.append("Valid: "+isValid);
+            sb.append("\n");
+            sb.append("Skadimi: " + dateTime);
+            System.out.println(sb.toString());
+        }
+        catch(SignatureException e){
+            System.out.println("Gabim ne verifikimin e nenshkrimit.");
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("Token i korruptuar.");
+        }
     }
     
     public boolean validateUser(String user,String inputPW) throws Exception {
