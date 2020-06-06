@@ -12,7 +12,7 @@ public class ds {
         CreateDelete cd = new CreateDelete();
         ExportImport ex =  new ExportImport();
         WriteRead wr = new WriteRead();
-
+        LoginStatus lg = new LoginStatus();
         if(args.length < 2 || args.length >4){
            System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
            System.exit(1);
