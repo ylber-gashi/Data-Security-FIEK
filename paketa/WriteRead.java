@@ -91,8 +91,8 @@ public class WriteRead {
         return null;
     }
 
-    public  String encrypt(String plainText) throws Exception {
-        PublicKey publicKey = getPublicElements();
+    public  String encrypt(String name,String plainText) throws Exception {
+        PublicKey publicKey = getPublicElements(name);
         Cipher encryptCipher = Cipher.getInstance("RSA");
         encryptCipher.init(Cipher.ENCRYPT_MODE, publicKey);
         byte[] cipherbytes = encryptCipher.doFinal(plainText.getBytes());
