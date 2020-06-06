@@ -1,5 +1,13 @@
 package paketa;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -128,7 +136,9 @@ public class LoginStatus {
 
 
     public void writeFile(String text, String filename) throws Exception{
-
+        try(PrintWriter writer = new PrintWriter(filename)){
+            writer.write(text);
+        }
     }
 
 }
