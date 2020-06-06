@@ -115,7 +115,14 @@ public class CreateDelete {
         }
         return generatedPassword;
     }
+    public void insertUser(String user, String salt, String password) throws Exception {
+        String query = "INSERT INTO users(username,salt, passwordd) VALUES('"+user+"','"+salt+"','"+password+"');";
 
+        Connection connection = dbConnection.getConnection();
+        Statement statement = connection.createStatement();
+        statement.execute(query);
+
+    }
     
     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
