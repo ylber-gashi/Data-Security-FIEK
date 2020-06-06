@@ -13,8 +13,6 @@ import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
 public class CreateDelete {
     static final String KEY_ALGORITHM = "RSA";
     static final int KEY_LENGTH = 1024;
@@ -30,16 +28,12 @@ public class CreateDelete {
         File fajlliPriv = new File("keys/" +user + ".xml");
         if(!(fajlliPub.exists() && fajlliPriv.exists())) {
             System.out.print("Jepni fjalekalimin: ");
-//            Scanner input1 = new Scanner(System.in);
-//            String pass = input1.nextLine();
             Console console1 = System.console();
             char[] passChar = console1.readPassword();
             String pass = String.valueOf(passChar);
             if(validatePassword(pass))
             {
                 System.out.print("Perserit fjalekalimin: ");
-//                Scanner input2 = new Scanner(System.in);
-//                String repeatPass = input2.nextLine();
                 Console console2 = System.console();
                 char[] passChar2 = console2.readPassword();
                 String repeatPass = String.valueOf(passChar2);
@@ -86,13 +80,9 @@ public class CreateDelete {
     }
     public byte[] getSalt() throws NoSuchAlgorithmException
     {
-        //Always use a SecureRandom generator
         SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-        //Create array for salt
         byte[] salt = new byte[16];
-        //Get a random salt
         random.nextBytes(salt);
-        //return salt
         return salt;
     }
     public String SHA1SecurePassword(String passwordToHash, byte[] salt)

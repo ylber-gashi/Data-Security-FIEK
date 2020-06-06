@@ -24,14 +24,19 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.io.Console;
+import javax.naming.NamingException;
 
 public class LoginStatus {
 
     public void login(String username) throws Exception {
-        System.out.println("Jepni fjalekalimin: ");
-        Scanner input = new Scanner(System.in);
-        String inputPass = input.nextLine();
-        boolean isValid = validateUser(username, inputPass);
+        System.out.print("Jepni fjalekalimin: ");
+
+        Console console1 = System.console();
+        char[] passChar = console1.readPassword();
+        String pass = String.valueOf(passChar);
+
+        boolean isValid = validateUser(username, pass);
 
         if(isValid){
             String tokeni = generateToken(username);

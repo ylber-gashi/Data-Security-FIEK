@@ -13,7 +13,7 @@ public class ds {
         ExportImport ex =  new ExportImport();
         WriteRead wr = new WriteRead();
         LoginStatus lg = new LoginStatus();
-        if(args.length < 2 || args.length >4){
+        if(args.length < 2 || args.length >6){
            System.out.println("Numri i argumenteve nuk eshte i mjaftueshem.");
            System.exit(1);
         }
