@@ -84,6 +84,18 @@ public class CreateDelete {
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
+    public byte[] getSalt() throws NoSuchAlgorithmException
+    {
+        //Always use a SecureRandom generator
+        SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+        //Create array for salt
+        byte[] salt = new byte[16];
+        //Get a random salt
+        random.nextBytes(salt);
+        //return salt
+        return salt;
+    }
+    
     public String savePrivateKeyAsXml(PrivateKey privateKey) throws Exception {
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
         RSAPrivateCrtKeySpec spec = keyFactory.getKeySpec(privateKey, RSAPrivateCrtKeySpec.class);
