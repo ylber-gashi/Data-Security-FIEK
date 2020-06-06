@@ -162,6 +162,13 @@ public class ds {
                 System.out.println("Komanda write-message nese deshironi vetem t'a ruani mesazhin e enkriptuar ne nje file duhet te jepet sipas kesaj skeme: \n" +
                         "write-message <name> <message> [file]' --sender <token>\n");
             }
+        }else if("login".equals(args[0])){
+            if(args.length == 2){
+                lg.login(args[1]);
+            }else{
+                System.out.println("Nuk jane dhene komanda valide.\n");
+                System.out.println("Komanda login duhet te jepet sipas kesaj skeme: \\n\" +\n\"' login <name>' \\n");
+            }
         }
         else if("read-message".equals(args[0])){
             if(args.length == 2) {
