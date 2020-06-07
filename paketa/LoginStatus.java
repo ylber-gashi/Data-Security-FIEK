@@ -96,6 +96,9 @@ public class LoginStatus {
         catch(IllegalArgumentException e){
             System.out.println("\nToken i korruptuar.");
         }
+        catch(DateTimeParseException e){
+            System.out.println("\nGabim ne parsimin e dates nga tokeni.");
+        }
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("\nNuk eshte dhene ndonje token valid.");
         }
