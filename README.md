@@ -43,15 +43,17 @@ direktoriumittëçelësave keys)
 
 ### FAZA 3
 1.
-*	**create-user** (Krijon një çift të publik/privat të RSA me emrat <name>.xml dhe <name>.pub.xml brenda
-direktoriumittëçelësave keys)
-*	**delete-user** (I largon të gjithë çelësat ekzistues të shfrytëzuesit.)
+*	**create-user** (Kjo komandë është zgjeruar ashtu që gjatë krijimit të shfrytëzuesit të kërkohet edhe
+fjalëkalimi.)
+*	**delete-user** (I largon të gjithë çelësat ekzistues të shfrytëzuesit dhe e fshin shfrytëzuesin nga databaza.)
 2. 
-*	**login** ()
-*	**status** ()
+*	**login** (Teston çiftin shfrytëzues/fjalëkalim. Në rast suksesi lëshohet një token i nënshkruar i cili mund të
+përdoret për autentikim të shfrytëzuesit.)
+*	**status** (Jep informata rreth tokenit.)
 3.
-*	**write-message** ()
-*	**read-message** ()
+*	**write-message** (Kjo komandë është zgjeruar ashtu që të mund ta pranojë edhe opsionin --sender <token>.)
+*	**read-message** (Kjo komandë është zgjeruar ashtu që nëse figuron pjesa e dërguesit/nënshkrimit në mesazh,
+atëherë do të tentohet verifikimi i atij nënshkrimi duke përdorur çelësin publik të dërguesit.)
 
 ## Për ekzekutimin e programit duhet ti ndjekni këto hapa:
 
@@ -121,15 +123,15 @@ direktoriumittëçelësave keys)
 	
 -Per komandën **login**:
 
-	java paketa.ds 
+	java paketa.ds login <name>
 	
 -Per komandën **status**:
 
-	java paketa.ds 
+	java paketa.ds status <token>
 	
 -Per komandën **_write-message_**:
 
-	java paketa.ds write-message
+	java paketa.ds write-message <name> <message> [file] --sender <token>
 	
 -Per komandën **_read-message_**:
 
