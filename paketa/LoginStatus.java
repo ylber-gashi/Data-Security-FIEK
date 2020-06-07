@@ -91,10 +91,13 @@ public class LoginStatus {
             System.out.println(sb.toString());
         }
         catch(SignatureException e){
-            System.out.println("Gabim ne verifikimin e nenshkrimit.");
+            System.out.println("\nGabim ne verifikimin e nenshkrimit.");
         }
         catch(IllegalArgumentException e){
-            System.out.println("Token i korruptuar.");
+            System.out.println("\nToken i korruptuar.");
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("\nNuk eshte dhene ndonje token valid.");
         }
     }
     
