@@ -303,3 +303,5 @@ atëherë do të tentohet verifikimi i atij nënshkrimi duke përdorur çelësin
 9. https://howtodoinjava.com/security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
 
 10. https://www.tutorialspoint.com/java_cryptography/java_cryptography_creating_signature.htm
+
+11. https://www.javatpoint.com/java-console-readpassword-method?fbclid=IwAR0YJ2Y6aRhGacGl4TaIgdV8YJAVFVmHahjp5ZdoZ1d-Ie65IBv6530SSTE
