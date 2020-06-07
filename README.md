@@ -299,3 +299,7 @@ atëherë do të tentohet verifikimi i atij nënshkrimi duke përdorur çelësin
 7. https://mkyong.com/java/jce-encryption-data-encryption-standard-des-tutorial/
 
 8. https://metacpan.org/pod/MIME::Base64
+
+9. https://howtodoinjava.com/security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/
+
+10. https://www.tutorialspoint.com/java_cryptography/java_cryptography_creating_signature.htm
