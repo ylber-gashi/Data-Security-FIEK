@@ -222,7 +222,7 @@ public class WriteRead {
             System.out.println("Gabim ne verifikimin e nenshkrimit.");
         }
         catch(IllegalArgumentException e){
-            System.out.println("Gabim ne verifikimin e nenshkrimit. Token i korruptuar.");
+            System.out.println("Gabim gjate leximit.");
         }
     }
 
