@@ -57,7 +57,7 @@ public class CreateDelete {
             }
         }
         else{
-            System.out.println("Gabim: Celesi '"+user+"' ekziston paraprakisht.");
+            System.out.println("Gabim: Shfrytezuesi '"+user+"' ekziston paraprakisht.");
         }
     }
 
@@ -175,7 +175,7 @@ public class CreateDelete {
             deleteUserFromDB(user);
         }
         else
-            System.out.println("Celesi '"+user+"' nuk ekziston");
+            System.out.println("Shfrytezuesi '"+user+"' nuk ekziston");
     }
 
     public void writeFile(String text, String filename) throws Exception{
