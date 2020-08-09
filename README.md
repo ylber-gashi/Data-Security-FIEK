@@ -4,7 +4,6 @@
 
 Në këtë projekt janë realizuar 11 komanda kryesore (3 nga faza e parë, 6 nga faza e dytë dhe 2 tjera nga faza e tretë) të cilat kanë edhe funksione(nënkomanda) tjera. Realizimin e tyre e kemi bërë me anë të gjuhës programuese Java.
 
-Kuptohet që të tre kemi punuar bashkarisht në realizimin e këtij projekti.
 
 
 ## Komandat kryesore me funksionet apo nënkomandat përkatëse janë: 
