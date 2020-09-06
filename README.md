@@ -68,7 +68,7 @@ atëherë do të tentohet verifikimi i atij nënshkrimi duke përdorur çelësin
 
 	java paketa.ds morse-code encode/decode <text>/<morse code>
 
-	java paketa.ds morse-code beep <;text>
+	java paketa.ds morse-code beep <text>
 
 
 -Per funksionin **_caesar_**:
